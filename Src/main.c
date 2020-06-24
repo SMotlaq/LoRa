@@ -99,11 +99,16 @@ int main(void)
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
 	
-	myLoRa.hSPIx      = &hspi3;
-	myLoRa.CS_port    = NSS_GPIO_Port;
-	myLoRa.CS_pin     = NSS_Pin;
-	myLoRa.reset_port = RESET_GPIO_Port;
-	myLoRa.reset_pin  = RESET_Pin;
+	myLoRa.hSPIx          = &hspi3;
+	myLoRa.CS_port        = NSS_GPIO_Port;
+	myLoRa.CS_pin         = NSS_Pin;
+	myLoRa.reset_port     = RESET_GPIO_Port;
+	myLoRa.reset_pin      = RESET_Pin;
+	myLoRa.frequency      = 433;
+	myLoRa.spredingFactor = 7;
+	myLoRa.bandWidth			= BW_250KHz;
+	myLoRa.crcRate				= CR_4_5;
+	//myLoRa.preamble				= ?;
 	
 	LoRa_reset(&myLoRa);
 /*	

@@ -152,6 +152,13 @@ void LoRa_init(LoRa* _LoRa){
 	uint8_t    read;
 	
 	// set frequency:
+		LoRa_setFrequency(_LoRa, _LoRa->frequency);
+	// set spreading factor:
+		
+	// set bandwidth:
+	
+	// set preamble:
+	
 	
 }
 

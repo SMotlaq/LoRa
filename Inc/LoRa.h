@@ -39,7 +39,7 @@ typedef struct LoRa_setting{
 	uint16_t			     reset_pin;
 	SPI_HandleTypeDef* hSPIx;
 	
-	uint16_t 					 frequency;
+	int 					     frequency;
 	uint8_t						 spredingFactor;
 	uint8_t						 bandWidth;
 	uint8_t						 crcRate;
