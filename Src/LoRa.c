@@ -136,13 +136,12 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq){
 }
 
 /* ----------------------------------------------------------------------------- *\
-		name        : LoRa_setFrequency
+		name        : LoRa_init
 
-		description : set carrier frequency e.g 433 MHz
+		description : initialize and set the right setting according to LoRa sruct vars
 
 		arguments   : 
 			LoRa* LoRa        --> LoRa object handler
-			uint16_t freq     --> desired frequency in MHz unit, e.g 434	
 
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
