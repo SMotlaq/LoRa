@@ -54,4 +54,4 @@ void LoRa_gotoMode(LoRa* _LoRa, int mode);
 
 void LoRa_setFrequency(LoRa* _LoRa, int freq);
 
-
+void LoRa_init(LoRa* _LoRa);

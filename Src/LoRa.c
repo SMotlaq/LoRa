@@ -135,6 +135,23 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq){
 	HAL_Delay(5);
 }
 
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setFrequency
 
+		description : set carrier frequency e.g 433 MHz
 
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+			uint16_t freq     --> desired frequency in MHz unit, e.g 434	
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_init(LoRa* _LoRa){
+	uint8_t address;
+	uint8_t    data;
+	uint8_t    read;
+	
+	// set frequency:
+	
+}
 
