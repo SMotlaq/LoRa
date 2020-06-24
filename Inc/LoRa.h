@@ -53,5 +53,6 @@ void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* va
 void LoRa_gotoMode(LoRa* _LoRa, int mode);
 
 void LoRa_setFrequency(LoRa* _LoRa, int freq);
+void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
 
 void LoRa_init(LoRa* _LoRa);

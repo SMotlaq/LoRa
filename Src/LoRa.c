@@ -1,7 +1,5 @@
 #include "LoRa.h"
 
-uint32_t F;
-
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_reset
 
@@ -44,6 +42,7 @@ void LoRa_gotoMode(LoRa* _LoRa, int mode){
 	
 	address[0] = RegOpMode | 0x80;
 	LoRa_writeReg(_LoRa, address, 1, data, 1);
+	HAL_Delay(10);
 }
 
 
@@ -106,14 +105,14 @@ void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* va
 
 		arguments   : 
 			LoRa* LoRa        --> LoRa object handler
-			uint16_t freq     --> desired frequency in MHz unit, e.g 434	
+			int   freq        --> desired frequency in MHz unit, e.g 434	
 
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_setFrequency(LoRa* _LoRa, int freq){
 	uint8_t address;
 	uint8_t    data;
-
+	uint32_t F;
 	F = (freq * 524288)>>5;
 	
 	// write Msb:
@@ -133,6 +132,21 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq){
 	address = RegFrLsb | 0x80;
 	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
 	HAL_Delay(5);
+}
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setSpreadingFactor
+
+		description : set spreading factor, from 7 to 12.
+
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+			int   SP          --> desired spreading factor e.g 7	
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP){
+
 }
 
 /* ----------------------------------------------------------------------------- *\
