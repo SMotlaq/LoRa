@@ -3,11 +3,11 @@
 <title>Static Call Graph - [LoRa_third\LoRa_third.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image LoRa_third\LoRa_third.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Jun 23 18:06:32 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Jun 24 17:18:09 2020
 <BR><P>
-<H3>Maximum Stack Usage =        192 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        176 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; LoRa_gotoMode &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 <P>
 <H3>
 Mutually Recursive functions
@@ -366,7 +366,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setFrequency
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -377,10 +378,10 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[67]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
+<P><STRONG><a name="[65]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_WritePin))
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
@@ -401,8 +402,8 @@ Global Symbols
 <P><STRONG><a name="[51]"></a>HAL_Init</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, stm32f4xx_hal.o(i.HAL_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_Init &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_MspInit
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_MspInit
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriorityGrouping
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -439,9 +440,9 @@ Global Symbols
 <P><STRONG><a name="[58]"></a>HAL_RCC_ClockConfig</STRONG> (Thumb, 288 bytes, Stack size 32 bytes, stm32f4xx_hal_rcc.o(i.HAL_RCC_ClockConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
@@ -462,9 +463,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
-<P><STRONG><a name="[68]"></a>HAL_SPI_GetState</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_hal_spi.o(i.HAL_SPI_GetState))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
+<P><STRONG><a name="[66]"></a>HAL_SPI_GetState</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_hal_spi.o(i.HAL_SPI_GetState))
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 </UL>
 
 <P><STRONG><a name="[5b]"></a>HAL_SPI_Init</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, stm32f4xx_hal_spi.o(i.HAL_SPI_Init))
@@ -491,7 +492,7 @@ Global Symbols
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTransaction
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 </UL>
 
 <P><STRONG><a name="[62]"></a>HAL_SPI_Transmit</STRONG> (Thumb, 348 bytes, Stack size 40 bytes, stm32f4xx_hal_spi.o(i.HAL_SPI_Transmit))
@@ -500,8 +501,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTxTransaction
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 </UL>
 
 <P><STRONG><a name="[60]"></a>HAL_SPI_TransmitReceive</STRONG> (Thumb, 482 bytes, Stack size 40 bytes, stm32f4xx_hal_spi.o(i.HAL_SPI_TransmitReceive))
@@ -528,45 +529,43 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
-<P><STRONG><a name="[64]"></a>LoRa_gotoMode</STRONG> (Thumb, 62 bytes, Stack size 32 bytes, lora.o(i.LoRa_gotoMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = LoRa_gotoMode &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
-</UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
-</UL>
-<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[65]"></a>LoRa_readReg</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, lora.o(i.LoRa_readReg))
+<P><STRONG><a name="[64]"></a>LoRa_readReg</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, lora.o(i.LoRa_readReg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Transmit
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_GetState
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_GetState
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[69]"></a>LoRa_reset</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, lora.o(i.LoRa_reset))
+<P><STRONG><a name="[67]"></a>LoRa_reset</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, lora.o(i.LoRa_reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LoRa_reset &rArr; HAL_Delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[66]"></a>LoRa_writeReg</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, lora.o(i.LoRa_writeReg))
+<P><STRONG><a name="[68]"></a>LoRa_setFrequency</STRONG> (Thumb, 114 bytes, Stack size 32 bytes, lora.o(i.LoRa_setFrequency))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = LoRa_setFrequency &rArr; LoRa_writeReg &rArr; HAL_SPI_Transmit &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[69]"></a>LoRa_writeReg</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, lora.o(i.LoRa_writeReg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = LoRa_writeReg &rArr; HAL_SPI_Transmit &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Transmit
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_GetState
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_GetState
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setFrequency
 </UL>
 
 <P><STRONG><a name="[3]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.MemManage_Handler))
@@ -616,13 +615,12 @@ Global Symbols
 
 <P><STRONG><a name="[7d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 262 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = main &rArr; LoRa_gotoMode &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 176 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setFrequency
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
@@ -637,7 +635,7 @@ Local Symbols
 <P><STRONG><a name="[6a]"></a>MX_GPIO_Init</STRONG> (Thumb, 134 bytes, Stack size 40 bytes, main.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>

@@ -44,10 +44,11 @@
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
-uint8_t addr[2];
-uint8_t rec[2] ;
-uint8_t data[1];
-int debug_var = 0;
+uint8_t addr;
+uint8_t rec[3];
+uint8_t data;
+uint32_t test;
+int     debug_var = 0;
 
 LoRa myLoRa;
 
@@ -104,9 +105,8 @@ int main(void)
 	myLoRa.reset_port = RESET_GPIO_Port;
 	myLoRa.reset_pin  = RESET_Pin;
 	
-	
 	LoRa_reset(&myLoRa);
-	
+/*	
 	// 1 - go to sleep mode
 	LoRa_gotoMode(&myLoRa, SLEEP_MODE);
 	HAL_Delay(10);
@@ -139,8 +139,24 @@ int main(void)
 	HAL_Delay(10);
 	addr[0] = RegModemConfig1 & 0x7F;
 	LoRa_readReg(&myLoRa, addr, 1, rec, 1);
+*/
 
-
+	LoRa_setFrequency(&myLoRa, 434);
+	
+	addr = RegFrMsb & 0x7F;
+	LoRa_readReg(&myLoRa, &addr, 1, &rec[0], 1);
+	HAL_Delay(5);
+	
+	addr = RegFrMid & 0x7F;
+	LoRa_readReg(&myLoRa, &addr, 1, &rec[1], 1);
+	HAL_Delay(5);
+	
+	addr = RegFrLsb & 0x7F;
+	LoRa_readReg(&myLoRa, &addr, 1, &rec[2], 1);
+	HAL_Delay(5);
+	
+	test = (rec[0]<<16) + (rec[1]<<8) + (rec[2]<<0);
+	
   /* USER CODE END 2 */
  
  

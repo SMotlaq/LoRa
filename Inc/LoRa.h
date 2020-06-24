@@ -25,6 +25,12 @@
 #define RegOpMode					0x01
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
+#define RegFrMsb					0x06
+#define RegFrMid					0x07
+#define RegFrLsb					0x08
+
+#define POWER_17db				0
+#define POWER_20db				1
 
 typedef struct LoRa_setting{
 	GPIO_TypeDef*      CS_port;
@@ -38,9 +44,14 @@ typedef struct LoRa_setting{
 	uint8_t						 bandWidth;
 	uint8_t						 crcRate;
 	float							 preamble;
+	
 } LoRa;
 
 void LoRa_reset(LoRa* _LoRa);
 void LoRa_readReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* output, uint16_t w_length);
 void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* values, uint16_t w_length);
 void LoRa_gotoMode(LoRa* _LoRa, int mode);
+
+void LoRa_setFrequency(LoRa* _LoRa, int freq);
+
+

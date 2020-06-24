@@ -1,5 +1,7 @@
 #include "LoRa.h"
 
+uint32_t F;
+
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_reset
 
@@ -74,7 +76,7 @@ void LoRa_readReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* out
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_writeReg
 
-		description : write a value(s) in a register(s) by an address,
+		description : write a value(s) in a register(s) by an address
 
 		arguments   : 
 			LoRa* LoRa        --> LoRa object handler
@@ -96,3 +98,43 @@ void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* va
 		;
 	HAL_GPIO_WritePin(_LoRa->CS_port, _LoRa->CS_pin, GPIO_PIN_SET);
 }
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setFrequency
+
+		description : set carrier frequency e.g 433 MHz
+
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+			uint16_t freq     --> desired frequency in MHz unit, e.g 434	
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setFrequency(LoRa* _LoRa, int freq){
+	uint8_t address;
+	uint8_t    data;
+
+	F = (freq * 524288)>>5;
+	
+	// write Msb:
+	data = F >> 16;
+	address = RegFrMsb | 0x80;
+	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	HAL_Delay(5);
+	
+	// write Mid:
+	data = F >> 8;
+	address = RegFrMid | 0x80;
+	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	HAL_Delay(5);
+	
+	// write Lsb:
+	data = F >> 0;
+	address = RegFrLsb | 0x80;
+	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	HAL_Delay(5);
+}
+
+
+
+
