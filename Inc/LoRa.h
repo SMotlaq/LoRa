@@ -22,6 +22,13 @@
 #define CR_4_7						3
 #define CR_4_8						4
 
+#define SF_7							7
+#define SF_8							8
+#define SF_9							9
+#define SF_10							10
+#define SF_11  						11
+#define SF_12							12
+
 #define RegOpMode					0x01
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
