@@ -148,18 +148,23 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq){
 
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
-void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP){
+void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 	uint8_t address;
 	uint8_t	data;
 	uint8_t	read;
 	
+	if(SF>12)
+		SF = 12;
+	if(SF<7)
+		SF = 7;
+	
 	address = RegModemConfig2 & 0x7F;
-	LoRa_readReg(_LoRa, &address, 1, &read2, 1);
+	LoRa_readReg(_LoRa, &address, 1, &read, 1);
 	HAL_Delay(10);
 	
 	address = RegModemConfig2 | 0x80;
-	data2 = (SP << 4) + (read2 & 0x0F);
-	LoRa_writeReg(_LoRa, &address, 1, &data2, 1);
+	data = (SF << 4) + (read & 0x0F);
+	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
 	HAL_Delay(10);
 }
 
