@@ -168,6 +168,29 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 	HAL_Delay(10);
 }
 
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_read
+
+		description : read a register by an address
+									
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+			uint8_t address  -->	pointer to the beginning of address array
+
+		returns     : register value
+\* ----------------------------------------------------------------------------- */
+uint8_t LoRa_read(LoRa* _LoRa, uint8_t address){
+	uint8_t read_data;
+	uint8_t data_addr;
+	
+	data_addr = address & 0x7F;
+	LoRa_readReg(_LoRa, &data_addr, 1, &read_data, 1);
+	HAL_Delay(5);
+	
+	return read_data;
+}
+
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_init
 
@@ -205,6 +228,6 @@ void LoRa_init(LoRa* _LoRa){
 	// set preamble:
 	
 	// goto standby mode:
-	
+		
 }
 
