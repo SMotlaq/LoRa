@@ -60,6 +60,7 @@ typedef struct LoRa_setting{
 	
 } LoRa;
 
+LoRa newLoRa(void);
 void LoRa_reset(LoRa* _LoRa);
 void LoRa_readReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* output, uint16_t w_length);
 void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* values, uint16_t w_length);

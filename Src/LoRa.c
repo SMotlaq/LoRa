@@ -1,6 +1,32 @@
 #include "LoRa.h"
 
 /* ----------------------------------------------------------------------------- *\
+		name        : newLoRa
+
+		description : it's a constructor for LoRa structure that assign default values
+									and pass created object (LoRa struct instanse)
+		
+		arguments   : Nothing
+		
+		returns     : A LoRa object whith these default values:
+											----------------------------------------
+										  |   carrier frequency = 433 MHz        |
+										  |    spreading factor = 7				       |
+											|           bandwidth = 125 KHz        |
+											| 		    coding rate = 4/5            |
+											----------------------------------------
+\* ----------------------------------------------------------------------------- */
+LoRa newLoRa(){
+	LoRa new_LoRa;
+	
+	new_LoRa.frequency      = 433      ;
+	new_LoRa.spredingFactor = SF_7     ;
+	new_LoRa.bandWidth			= BW_125KHz;
+	new_LoRa.crcRate        = CR_4_5   ;
+	
+	return new_LoRa;
+}
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_reset
 
 		description : reset module
