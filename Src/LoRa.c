@@ -202,6 +202,21 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 }
 
 /* ----------------------------------------------------------------------------- *\
+		name        : LoRa_isvalid
+
+		description : check the LoRa instruct values
+		
+		arguments   : 
+			LoRa* LoRa --> LoRa object handler
+		
+		returns     : returns 1 if all of the values were given, otherwise returns 0
+\* ----------------------------------------------------------------------------- */
+uint8_t LoRa_isvalid(LoRa* _LoRa){
+	
+	return 1;
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_init
 
 		description : initialize and set the right setting according to LoRa sruct vars
@@ -215,35 +230,38 @@ void LoRa_init(LoRa* _LoRa){
 	uint8_t    data;
 	uint8_t    read;
 	
-	// goto sleep mode:
-		LoRa_gotoMode(_LoRa, SLEEP_MODE);
-		HAL_Delay(10);
+	if(LoRa_isvalid(_LoRa)){		
+		// goto sleep mode:
+			LoRa_gotoMode(_LoRa, SLEEP_MODE);
+			HAL_Delay(10);
 
-	// turn on lora mode:
-		read = LoRa_read(_LoRa, RegOpMode);
-		HAL_Delay(10);
-		data = read | 0x80;
-		LoRa_write(_LoRa, RegOpMode, data);
-		HAL_Delay(100);
-	
-	// set frequency:
-		LoRa_setFrequency(_LoRa, _LoRa->frequency);
-	
-	// set spreading factor:
-		LoRa_setSpreadingFactor(_LoRa, _LoRa->spredingFactor);
-	
-	// set bandwidth, coding rate and expilicit mode:
-	
-		// 8 bit RegModemConfig --> | X | X | X | X | X | X | X | X |
-		//  each bit represents --> |   bandwidth   |     CR    |I/E|
-		data = 0;
-		data = (_LoRa->bandWidth << 4) + (_LoRa->crcRate << 1);
-		LoRa_write(_LoRa, RegModemConfig1, data);
+		// turn on lora mode:
+			read = LoRa_read(_LoRa, RegOpMode);
+			HAL_Delay(10);
+			data = read | 0x80;
+			LoRa_write(_LoRa, RegOpMode, data);
+			HAL_Delay(100);
 		
-	// set preamble:
-	
-	// goto standby mode:
-		LoRa_gotoMode(_LoRa, STNBY_MODE);
-		HAL_Delay(10);
+		// set frequency:
+			LoRa_setFrequency(_LoRa, _LoRa->frequency);
+		
+		// set spreading factor:
+			LoRa_setSpreadingFactor(_LoRa, _LoRa->spredingFactor);
+		
+		// set bandwidth, coding rate and expilicit mode:
+		
+			// 8 bit RegModemConfig --> | X | X | X | X | X | X | X | X |
+			//  each bit represents --> |   bandwidth   |     CR    |I/E|
+			data = 0;
+			data = (_LoRa->bandWidth << 4) + (_LoRa->crcRate << 1);
+			LoRa_write(_LoRa, RegModemConfig1, data);
+			
+		// set preamble:
+			
+		
+		// goto standby mode:
+			LoRa_gotoMode(_LoRa, STNBY_MODE);
+			HAL_Delay(10);
+	}
 }
 

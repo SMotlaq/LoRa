@@ -96,6 +96,7 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
+
 	
 	myLoRa.hSPIx          = &hspi3;
 	myLoRa.CS_port        = NSS_GPIO_Port;
@@ -109,41 +110,6 @@ int main(void)
 	//myLoRa.preamble				= ?;
 	
 	LoRa_reset(&myLoRa);
-/*	
-	// 1 - go to sleep mode
-	LoRa_gotoMode(&myLoRa, SLEEP_MODE);
-	HAL_Delay(10);
-	
-	// 2- turn on LoRa mode
-	addr[0] = RegOpMode & 0x7F;
-	LoRa_readReg(&myLoRa, addr, 1, rec, 1);
-	HAL_Delay(10);
-	data[0] = rec[0] | 0x80;
-	addr[0] = RegOpMode | 0x80;
-	LoRa_writeReg(&myLoRa, addr, 1, data, 1);
-	HAL_Delay(10);
-	addr[0] = RegOpMode & 0x7F;
-	LoRa_readReg(&myLoRa, addr, 1, rec, 1);
-	HAL_Delay(10);
-	
-	// 3 - read config register
-	addr[0] = RegModemConfig1 & 0x7F;
-	LoRa_readReg(&myLoRa, addr, 1, rec, 1);
-	HAL_Delay(10);
-
-	// 4 - write new settings on module
-	addr[0] = RegModemConfig1 | 0x80;
-	data[0] = 0x82;		                		//BW = 250KHz, CS = 4/5, Expilicit mode
-	LoRa_writeReg(&myLoRa, addr, 1, data, 1);
-	HAL_Delay(10);
-	// 5 - go to standby mode
-	LoRa_gotoMode(&myLoRa, STNBY_MODE);
-	// 6 - read config register again to make sure
-	HAL_Delay(10);
-	addr[0] = RegModemConfig1 & 0x7F;
-	LoRa_readReg(&myLoRa, addr, 1, rec, 1);
-*/
-
 	LoRa_init(&myLoRa);
 	
 	rec[0] = LoRa_read(&myLoRa, RegFrMsb       );
