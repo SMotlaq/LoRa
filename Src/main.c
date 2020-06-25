@@ -146,9 +146,9 @@ int main(void)
 
 	LoRa_init(&myLoRa);
 	
-	rec[0] = LoRa_read(&myLoRa, RegFrMsb);
-	rec[1] = LoRa_read(&myLoRa, RegFrMid);
-	rec[2] = LoRa_read(&myLoRa, RegFrLsb);
+	rec[0] = LoRa_read(&myLoRa, RegFrMsb       );
+	rec[1] = LoRa_read(&myLoRa, RegFrMid       );
+	rec[2] = LoRa_read(&myLoRa, RegFrLsb       );
 	rec[3] = LoRa_read(&myLoRa, RegModemConfig1);
 	rec[4] = LoRa_read(&myLoRa, RegModemConfig2);
 		

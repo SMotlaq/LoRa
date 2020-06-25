@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\LoRa_third\LoRa_third.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\LoRa_third\LoRa_third.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jun 25 19:44:43 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jun 25 21:01:18 2020
 <BR><P>
 <H3>Maximum Stack Usage =        200 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -544,7 +544,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
 </UL>
 
-<P><STRONG><a name="[67]"></a>LoRa_init</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, lora.o(i.LoRa_init))
+<P><STRONG><a name="[67]"></a>LoRa_init</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, lora.o(i.LoRa_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = LoRa_init &rArr; LoRa_setSpreadingFactor &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_write
