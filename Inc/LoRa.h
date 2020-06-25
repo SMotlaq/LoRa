@@ -3,9 +3,11 @@
 #define TRANSMIT_TIMEOUT	2000
 #define RECEIVE_TIMEOUT		2000
 
+//--------- MODES ---------//
 #define SLEEP_MODE				0
 #define	STNBY_MODE				1
 
+//------- BANDWIDTH -------//
 #define BW_7_8KHz					0
 #define BW_10_4KHz				1
 #define BW_15_6KHz				2
@@ -17,11 +19,13 @@
 #define BW_250KHz					8
 #define BW_500KHz					9
 
+//------ CODING RATE ------//
 #define CR_4_5						1
 #define CR_4_6						2
 #define CR_4_7						3
 #define CR_4_8						4
 
+//--- SPREADING FACTORS ---//
 #define SF_7							7
 #define SF_8							8
 #define SF_9							9
@@ -29,15 +33,17 @@
 #define SF_11  						11
 #define SF_12							12
 
+//------ POWER GAIN ------//
+#define POWER_17db				0
+#define POWER_20db				1
+
+//------- REGISTERS -------//
 #define RegOpMode					0x01
-#define	RegModemConfig1		0x1D
-#define RegModemConfig2		0x1E
 #define RegFrMsb					0x06
 #define RegFrMid					0x07
 #define RegFrLsb					0x08
-
-#define POWER_17db				0
-#define POWER_20db				1
+#define	RegModemConfig1		0x1D
+#define RegModemConfig2		0x1E
 
 typedef struct LoRa_setting{
 	GPIO_TypeDef*      CS_port;
