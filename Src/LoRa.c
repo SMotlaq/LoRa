@@ -175,8 +175,8 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 		description : read a register by an address
 									
 		arguments   : 
-			LoRa* LoRa        --> LoRa object handler
-			uint8_t address  -->	pointer to the beginning of address array
+			LoRa*   LoRa        --> LoRa object handler
+			uint8_t address     -->	address of the register e.g 0x1D
 
 		returns     : register value
 \* ----------------------------------------------------------------------------- */
@@ -189,6 +189,22 @@ uint8_t LoRa_read(LoRa* _LoRa, uint8_t address){
 	HAL_Delay(5);
 	
 	return read_data;
+}
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_write
+
+		description : write a value in a register by an address
+									
+		arguments   : 
+			LoRa*   LoRa        --> LoRa object handler
+			uint8_t address     -->	address of the register e.g 0x1D
+			uint8_t value       --> value that you want to write
+
+		returns     : register value
+\* ----------------------------------------------------------------------------- */
+void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
+	
 }
 
 /* ----------------------------------------------------------------------------- *\
