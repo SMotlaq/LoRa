@@ -228,6 +228,7 @@ void LoRa_init(LoRa* _LoRa){
 	// set preamble:
 	
 	// goto standby mode:
-		
+		LoRa_gotoMode(_LoRa, STNBY_MODE);
+		HAL_Delay(10);
 }
 

@@ -761,14 +761,14 @@ ARM Macro Assembler    Page 12
   391 0000001C                 END
               00000000 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
-erwork --depend=lora_third\startup_stm32f411xe.d -olora_third\startup_stm32f411
-xe.o -ID:\ac\Projects\ARM\STM32F411\LoRa\LoRa_third\MDK-ARM\RTE\_LoRa_third -IC
-:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Kei
-l\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="_
-_MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 522" --predefine="_RTE_ S
-ETA 1" --predefine="STM32F411xE SETA 1" --list=startup_stm32f411xe.lst startup_
-stm32f411xe.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=.\lora_third\startup_stm32f411xe.d -o.\lora_third\startup_st
+m32f411xe.o -I.\RTE\_LoRa_third -IC:\Users\ASUS\AppData\Local\Arm\Packs\ARM\CMS
+IS\5.7.0\CMSIS\Core\Include -IC:\Users\ASUS\AppData\Local\Arm\Packs\Keil\STM32F
+4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 530" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F411xE SETA 1" --predefine="_RTE_ SETA 1" --list=startup_stm32
+f411xe.lst startup_stm32f411xe.s
 
 
 
