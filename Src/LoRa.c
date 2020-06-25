@@ -1,8 +1,5 @@
 #include "LoRa.h"
 
-uint8_t	data2;
-uint8_t	read2;
-
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_reset
 
@@ -32,19 +29,17 @@ void LoRa_reset(LoRa* _LoRa){
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_gotoMode(LoRa* _LoRa, int mode){
-	uint8_t    read[1];
-	uint8_t address[1];
-	uint8_t    data[1];
-	address[0] = RegOpMode & 0x7F;
-	LoRa_readReg(_LoRa, address, 1, read, 1);
+	uint8_t    read;
+	uint8_t    data;
+	
+	read = LoRa_read(_LoRa, RegOpMode);
 	
 	if(mode == SLEEP_MODE)
-		data[0] = read[0] & 0xF8;
-	else
-		data[0] = (read[0] & 0xF8) | 0x01;
+		data = read & 0xF8;
+	else if (mode == STNBY_MODE)
+		data = (read & 0xF8) | 0x01;
 	
-	address[0] = RegOpMode | 0x80;
-	LoRa_writeReg(_LoRa, address, 1, data, 1);
+	LoRa_write(_LoRa, RegOpMode, data);
 	HAL_Delay(10);
 }
 
@@ -113,27 +108,23 @@ void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* va
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_setFrequency(LoRa* _LoRa, int freq){
-	uint8_t address;
-	uint8_t    data;
+	uint8_t  data;
 	uint32_t F;
 	F = (freq * 524288)>>5;
 	
 	// write Msb:
 	data = F >> 16;
-	address = RegFrMsb | 0x80;
-	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	LoRa_write(_LoRa, RegFrMsb, data);
 	HAL_Delay(5);
 	
 	// write Mid:
 	data = F >> 8;
-	address = RegFrMid | 0x80;
-	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	LoRa_write(_LoRa, RegFrMid, data);
 	HAL_Delay(5);
-	
+
 	// write Lsb:
 	data = F >> 0;
-	address = RegFrLsb | 0x80;
-	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	LoRa_write(_LoRa, RegFrLsb, data);
 	HAL_Delay(5);
 }
 
@@ -149,7 +140,6 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq){
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
-	uint8_t address;
 	uint8_t	data;
 	uint8_t	read;
 	
@@ -158,13 +148,11 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 	if(SF<7)
 		SF = 7;
 	
-	address = RegModemConfig2 & 0x7F;
-	LoRa_readReg(_LoRa, &address, 1, &read, 1);
+	read = LoRa_read(_LoRa, RegModemConfig2);
 	HAL_Delay(10);
 	
-	address = RegModemConfig2 | 0x80;
 	data = (SF << 4) + (read & 0x0F);
-	LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+	LoRa_write(_LoRa, RegModemConfig2, data);
 	HAL_Delay(10);
 }
 
@@ -204,7 +192,13 @@ uint8_t LoRa_read(LoRa* _LoRa, uint8_t address){
 		returns     : register value
 \* ----------------------------------------------------------------------------- */
 void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
+	uint8_t data;
+	uint8_t addr;
 	
+	addr = address | 0x80;
+	data = value;
+	LoRa_writeReg(_LoRa, &addr, 1, &data, 1);
+	HAL_Delay(5);
 }
 
 /* ----------------------------------------------------------------------------- *\
@@ -218,7 +212,6 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_init(LoRa* _LoRa){
-	uint8_t address;
 	uint8_t    data;
 	uint8_t    read;
 	
@@ -227,12 +220,10 @@ void LoRa_init(LoRa* _LoRa){
 		HAL_Delay(10);
 
 	// turn on lora mode:
-		address = RegOpMode & 0x7F;
-		LoRa_readReg(_LoRa, &address, 1, &read, 1);
+		read = LoRa_read(_LoRa, RegOpMode);
 		HAL_Delay(10);
 		data = read | 0x80;
-		address = RegOpMode | 0x80;
-		LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+		LoRa_write(_LoRa, RegOpMode, data);
 		HAL_Delay(100);
 	
 	// set frequency:

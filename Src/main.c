@@ -44,10 +44,8 @@
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
-uint8_t addr;
-uint8_t rec[3];
+uint8_t rec[5];
 uint8_t data;
-uint32_t test;
 int     debug_var = 0;
 
 LoRa myLoRa;
@@ -104,10 +102,10 @@ int main(void)
 	myLoRa.CS_pin         = NSS_Pin;
 	myLoRa.reset_port     = RESET_GPIO_Port;
 	myLoRa.reset_pin      = RESET_Pin;
-	myLoRa.frequency      = 433;
-	myLoRa.spredingFactor = SF_8;
-	myLoRa.bandWidth			= BW_250KHz;
-	myLoRa.crcRate				= CR_4_5;
+	myLoRa.frequency      = 434;
+	myLoRa.spredingFactor = SF_9;
+	myLoRa.bandWidth			= BW_500KHz;
+	myLoRa.crcRate				= CR_4_6;
 	//myLoRa.preamble				= ?;
 	
 	LoRa_reset(&myLoRa);
@@ -149,8 +147,10 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	rec[0] = LoRa_read(&myLoRa, RegFrMsb);
-	rec[1] = LoRa_read(&myLoRa, RegModemConfig1);
-	rec[2] = LoRa_read(&myLoRa, RegModemConfig2);
+	rec[1] = LoRa_read(&myLoRa, RegFrMid);
+	rec[2] = LoRa_read(&myLoRa, RegFrLsb);
+	rec[3] = LoRa_read(&myLoRa, RegModemConfig1);
+	rec[4] = LoRa_read(&myLoRa, RegModemConfig2);
 		
   /* USER CODE END 2 */
  
