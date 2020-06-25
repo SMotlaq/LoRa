@@ -1,5 +1,8 @@
 #include "LoRa.h"
 
+uint8_t	data2;
+uint8_t	read2;
+
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_reset
 
@@ -146,7 +149,18 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq){
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP){
-
+	uint8_t address;
+	uint8_t	data;
+	uint8_t	read;
+	
+	address = RegModemConfig2 & 0x7F;
+	LoRa_readReg(_LoRa, &address, 1, &read2, 1);
+	HAL_Delay(10);
+	
+	address = RegModemConfig2 | 0x80;
+	data2 = (SP << 4) + (read2 & 0x0F);
+	LoRa_writeReg(_LoRa, &address, 1, &data2, 1);
+	HAL_Delay(10);
 }
 
 /* ----------------------------------------------------------------------------- *\

@@ -27,14 +27,22 @@ Project File Date:  06/23/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LoRa_third'
-compiling main.c...
-../Src/main.c(147): warning:  #9-D: nested comment is not allowed
-  //*/
-../Src/main.c: 1 warning, 0 errors
+compiling LoRa.c...
+..\Src\LoRa.c(153): warning:  #177-D: variable "data"  was declared but never referenced
+  	uint8_t	data;
+..\Src\LoRa.c(154): warning:  #177-D: variable "read"  was declared but never referenced
+  	uint8_t	read;
+..\Src\LoRa.c(177): warning:  #177-D: variable "address"  was declared but never referenced
+  	uint8_t address;
+..\Src\LoRa.c(178): warning:  #177-D: variable "data"  was declared but never referenced
+  	uint8_t    data;
+..\Src\LoRa.c(179): warning:  #177-D: variable "read"  was declared but never referenced
+  	uint8_t    read;
+..\Src\LoRa.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=5076 RO-data=456 RW-data=28 ZI-data=1148  
+Program Size: Code=5040 RO-data=456 RW-data=32 ZI-data=1144  
 FromELF: creating hex file...
-"LoRa_third\LoRa_third.axf" - 0 Error(s), 1 Warning(s).
+"LoRa_third\LoRa_third.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +60,7 @@ Package Vendor: ARM
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

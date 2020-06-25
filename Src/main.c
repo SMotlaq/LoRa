@@ -145,7 +145,17 @@ int main(void)
 	addr[0] = RegModemConfig1 & 0x7F;
 	LoRa_readReg(&myLoRa, addr, 1, rec, 1);
 //*/
+
+
+	// 2- turn on LoRa mode
+	addr = RegOpMode & 0x7F;
+	LoRa_readReg(&myLoRa, &addr, 1, rec, 1);
+	HAL_Delay(10);
+	data = rec[0] | 0x80;
+	addr = RegOpMode | 0x80;
+	LoRa_writeReg(&myLoRa, &addr, 1, &data, 1);
 	HAL_Delay(100);
+	
 	LoRa_setSpreadingFactor(&myLoRa, 8);
 	
 	addr = RegModemConfig2 & 0x7F;
