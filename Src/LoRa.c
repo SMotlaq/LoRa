@@ -178,14 +178,28 @@ void LoRa_init(LoRa* _LoRa){
 	uint8_t    data;
 	uint8_t    read;
 	
+	// goto sleep mode:
+		LoRa_gotoMode(_LoRa, SLEEP_MODE);
+		HAL_Delay(10);
+
+	// turn on lora mode:
+		address = RegOpMode & 0x7F;
+		LoRa_readReg(_LoRa, &address, 1, &read, 1);
+		HAL_Delay(10);
+		data = read | 0x80;
+		address = RegOpMode | 0x80;
+		LoRa_writeReg(_LoRa, &address, 1, &data, 1);
+		HAL_Delay(100);
+	
 	// set frequency:
 		LoRa_setFrequency(_LoRa, _LoRa->frequency);
 	// set spreading factor:
-		
+		LoRa_setSpreadingFactor(_LoRa, _LoRa->spredingFactor);
 	// set bandwidth:
-	
+		
 	// set preamble:
 	
+	// goto standby mode:
 	
 }
 
