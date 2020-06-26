@@ -271,20 +271,30 @@ void LoRa_init(LoRa* _LoRa){
 		// set frequency:
 			LoRa_setFrequency(_LoRa, _LoRa->frequency);
 		
-		// set spreading factor:
+		// set output power gain:
+		
+		// set over current protection:
+		
+		// set LNA gain:
+		
+		// set spreading factor, CRC on, and Timeout Msb:
+			
+			//????????????????????????????
 			LoRa_setSpreadingFactor(_LoRa, _LoRa->spredingFactor);
+		
+		
+		// set Timeout Lsb:
 		
 		// set bandwidth, coding rate and expilicit mode:
 		
 			// 8 bit RegModemConfig --> | X | X | X | X | X | X | X | X |
-			//  each bit represents --> |   bandwidth   |     CR    |I/E|
+			//       bits represent --> |   bandwidth   |     CR    |I/E|
 			data = 0;
 			data = (_LoRa->bandWidth << 4) + (_LoRa->crcRate << 1);
 			LoRa_write(_LoRa, RegModemConfig1, data);
 			
 		// set preamble:
 			
-		
 		// goto standby mode:
 			LoRa_gotoMode(_LoRa, STNBY_MODE);
 			HAL_Delay(10);

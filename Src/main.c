@@ -103,10 +103,10 @@ int main(void)
 	myLoRa.CS_pin         = NSS_Pin;
 	myLoRa.reset_port     = RESET_GPIO_Port;
 	myLoRa.reset_pin      = RESET_Pin;
-	//myLoRa.frequency      = 434;
-	//myLoRa.spredingFactor = SF_9;
-	//myLoRa.bandWidth			= BW_500KHz;
-	//myLoRa.crcRate				= CR_4_6;
+	myLoRa.frequency      = 434;							// default = 433 MHz
+	myLoRa.spredingFactor = SF_9;							// default = SF_7
+	myLoRa.bandWidth			= BW_250KHz;				// default = BW_125KHz
+	myLoRa.crcRate				= CR_4_8;						// default = CR_4_5
 	//myLoRa.preamble				= ?;
 	
 	LoRa_reset(&myLoRa);
