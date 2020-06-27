@@ -351,7 +351,8 @@ void LoRa_init(LoRa* _LoRa){
 		
 		
 		// set Timeout Lsb:
-		
+			LoRa_write(_LoRa, RegSymbTimeoutL, 0xFF);
+			
 		// set bandwidth, coding rate and expilicit mode:
 		
 			// 8 bit RegModemConfig --> | X | X | X | X | X | X | X | X |

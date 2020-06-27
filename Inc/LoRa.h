@@ -49,6 +49,7 @@
 #define RegLna						0x0C
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
+#define RegSymbTimeoutL		0x1F
 
 typedef struct LoRa_setting{
 	
