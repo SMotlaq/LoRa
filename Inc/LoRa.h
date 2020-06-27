@@ -83,4 +83,6 @@ void LoRa_setFrequency(LoRa* _LoRa, int freq);
 void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
 void LoRa_setPower(LoRa* _LoRa, uint8_t power);
 void LoRa_setOCP(LoRa* _LoRa, uint8_t current);
+void LoRa_setTOMsb_setCRCon(LoRa* _LoRa);
+
 void LoRa_init(LoRa* _LoRa);

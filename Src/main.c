@@ -114,11 +114,11 @@ int main(void)
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
 	
-	rec[0] = LoRa_read(&myLoRa, RegFrMsb   );
-	rec[1] = LoRa_read(&myLoRa, RegFrMid   );
-	rec[2] = LoRa_read(&myLoRa, RegFrLsb   );
-	rec[3] = LoRa_read(&myLoRa, RegPaConfig);
-	rec[4] = LoRa_read(&myLoRa, RegOcp		 );
+	rec[0] = LoRa_read(&myLoRa, RegFrMsb       );
+	rec[1] = LoRa_read(&myLoRa, RegFrMid       );
+	rec[2] = LoRa_read(&myLoRa, RegFrLsb       );
+	rec[3] = LoRa_read(&myLoRa, RegPaConfig    );
+	rec[4] = LoRa_read(&myLoRa, RegModemConfig2);
 		
   /* USER CODE END 2 */
  

@@ -229,6 +229,26 @@ void LoRa_setOCP(LoRa* _LoRa, uint8_t current){
 }
 
 /* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setTOMsb_setCRCon
+
+		description : set timeout msb to 0xFF + set CRC enable.
+
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setTOMsb_setCRCon(LoRa* _LoRa){
+	uint8_t read, data;
+	
+	read = LoRa_read(_LoRa, RegModemConfig2);
+	
+	data = read | 0x07;
+	LoRa_write(_LoRa, RegModemConfig2, data);\
+	HAL_Delay(10);
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_read
 
 		description : read a register by an address
@@ -326,8 +346,7 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_write(_LoRa, RegLna, 0x23);
 		
 		// set spreading factor, CRC on, and Timeout Msb:
-			
-			//????????????????????????????
+			LoRa_setTOMsb_setCRCon(_LoRa);
 			LoRa_setSpreadingFactor(_LoRa, _LoRa->spredingFactor);
 		
 		
