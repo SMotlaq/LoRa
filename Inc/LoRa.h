@@ -50,6 +50,9 @@
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
 #define RegSymbTimeoutL		0x1F
+#define RegPreambleMsb		0x20
+#define RegPreambleLsb		0x21
+
 
 typedef struct LoRa_setting{
 	
@@ -65,7 +68,7 @@ typedef struct LoRa_setting{
 	uint8_t			spredingFactor;
 	uint8_t			bandWidth;
 	uint8_t			crcRate;
-	float				preamble;
+	uint16_t		preamble;
 	uint8_t			power;
 	uint8_t			overCurrentProtection;
 	

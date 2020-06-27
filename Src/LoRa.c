@@ -19,11 +19,13 @@
 LoRa newLoRa(){
 	LoRa new_LoRa;
 	
-	new_LoRa.frequency      = 433      ;
-	new_LoRa.spredingFactor = SF_7     ;
-	new_LoRa.bandWidth			= BW_125KHz;
-	new_LoRa.crcRate        = CR_4_5   ;
-	new_LoRa.power					= POWER_20db;
+	new_LoRa.frequency             = 433       ;
+	new_LoRa.spredingFactor        = SF_7      ;
+	new_LoRa.bandWidth			       = BW_125KHz ;
+	new_LoRa.crcRate               = CR_4_5    ;
+	new_LoRa.power					       = POWER_20db;
+	new_LoRa.overCurrentProtection = 100       ;
+	new_LoRa.preamble				       = 8         ;
 	
 	return new_LoRa;
 }
@@ -349,12 +351,10 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_setTOMsb_setCRCon(_LoRa);
 			LoRa_setSpreadingFactor(_LoRa, _LoRa->spredingFactor);
 		
-		
 		// set Timeout Lsb:
 			LoRa_write(_LoRa, RegSymbTimeoutL, 0xFF);
 			
 		// set bandwidth, coding rate and expilicit mode:
-		
 			// 8 bit RegModemConfig --> | X | X | X | X | X | X | X | X |
 			//       bits represent --> |   bandwidth   |     CR    |I/E|
 			data = 0;
@@ -362,6 +362,8 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_write(_LoRa, RegModemConfig1, data);
 			
 		// set preamble:
+			LoRa_write(_LoRa, RegPreambleMsb, _LoRa->preamble >> 8);
+			LoRa_write(_LoRa, RegPreambleLsb, _LoRa->preamble >> 0);
 			
 		// goto standby mode:
 			LoRa_gotoMode(_LoRa, STNBY_MODE);

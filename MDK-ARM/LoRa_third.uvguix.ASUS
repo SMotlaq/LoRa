@@ -93,8 +93,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-1</xPos>
-        <yPos>-1</yPos>
+        <xPos>-32000</xPos>
+        <yPos>-32000</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
@@ -3606,9 +3606,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>../Src/main.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>90</TopLine>
-        <CurrentLine>126</CurrentLine>
+        <ColumnNumber>34</ColumnNumber>
+        <TopLine>86</TopLine>
+        <CurrentLine>112</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3619,20 +3619,20 @@
       <ActiveTab>1</ActiveTab>
       <Doc>
         <Name>../Inc/LoRa.h</Name>
-        <ColumnNumber>5</ColumnNumber>
-        <TopLine>52</TopLine>
-        <CurrentLine>85</CurrentLine>
+        <ColumnNumber>10</ColumnNumber>
+        <TopLine>38</TopLine>
+        <CurrentLine>71</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>..\Src\LoRa.c</Name>
-        <ColumnNumber>23</ColumnNumber>
-        <TopLine>77</TopLine>
-        <CurrentLine>353</CurrentLine>
+        <ColumnNumber>17</ColumnNumber>
+        <TopLine>1</TopLine>
+        <CurrentLine>42</CurrentLine>
         <Folding>1</Folding>
-        <ContractedFolders>2,18,29,39,46,57,73,88,99,114,125,136,157,168,185,196,201,250,261,272,284,294,304,309</ContractedFolders>
+        <ContractedFolders>2,31,41,48,59,75,90,101,116,127,138,159,170,187,198,203,214,232,242,252,263,274,286,296,306,311,321</ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
     </MDIGroup>

@@ -109,7 +109,7 @@ int main(void)
 	myLoRa.crcRate				       = CR_4_8;						// default = CR_4_5
 	myLoRa.power					       = POWER_20db;				// default = 20db
 	myLoRa.overCurrentProtection = 130; 							// default = 100 mA
-	//myLoRa.preamble				= ?;
+	myLoRa.preamble				       = 8;								// default = 8;
 	
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
@@ -117,8 +117,8 @@ int main(void)
 	rec[0] = LoRa_read(&myLoRa, RegFrMsb       );
 	rec[1] = LoRa_read(&myLoRa, RegFrMid       );
 	rec[2] = LoRa_read(&myLoRa, RegFrLsb       );
-	rec[3] = LoRa_read(&myLoRa, RegPaConfig    );
-	rec[4] = LoRa_read(&myLoRa, RegModemConfig2);
+	rec[3] = LoRa_read(&myLoRa, RegPreambleMsb);
+	rec[4] = LoRa_read(&myLoRa, RegPreambleLsb);
 		
   /* USER CODE END 2 */
  
