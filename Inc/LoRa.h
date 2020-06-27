@@ -34,8 +34,10 @@
 #define SF_12							12
 
 //------ POWER GAIN ------//
-#define POWER_17db				0
-#define POWER_20db				1
+#define POWER_11db				0xF6
+#define POWER_14db				0xF9
+#define POWER_17db				0xFC
+#define POWER_20db				0xFF
 
 //------- REGISTERS -------//
 #define RegOpMode					0x01
