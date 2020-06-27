@@ -44,6 +44,7 @@
 #define RegFrMsb					0x06
 #define RegFrMid					0x07
 #define RegFrLsb					0x08
+#define RegPaConfig				0x09
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
 
@@ -74,5 +75,6 @@ uint8_t LoRa_isvalid(LoRa* _LoRa);
 
 void LoRa_setFrequency(LoRa* _LoRa, int freq);
 void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
+void LoRa_setPower(LoRa* _LoRa, uint8_t power);
 
 void LoRa_init(LoRa* _LoRa);

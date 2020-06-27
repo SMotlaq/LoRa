@@ -107,6 +107,7 @@ int main(void)
 	myLoRa.spredingFactor = SF_9;							// default = SF_7
 	myLoRa.bandWidth			= BW_250KHz;				// default = BW_125KHz
 	myLoRa.crcRate				= CR_4_8;						// default = CR_4_5
+	myLoRa.power					= POWER_20db;				// default = 20db
 	//myLoRa.preamble				= ?;
 	
 	LoRa_reset(&myLoRa);
@@ -115,8 +116,7 @@ int main(void)
 	rec[0] = LoRa_read(&myLoRa, RegFrMsb       );
 	rec[1] = LoRa_read(&myLoRa, RegFrMid       );
 	rec[2] = LoRa_read(&myLoRa, RegFrLsb       );
-	rec[3] = LoRa_read(&myLoRa, RegModemConfig1);
-	rec[4] = LoRa_read(&myLoRa, RegModemConfig2);
+	rec[3] = LoRa_read(&myLoRa, RegPaConfig);
 		
   /* USER CODE END 2 */
  

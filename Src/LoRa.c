@@ -183,6 +183,21 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 	HAL_Delay(10);
 }
 
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setPower
+
+		description : set power gain.
+
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+			int   power       --> desired power e.g POWER_17db	
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setPower(LoRa* _LoRa, uint8_t power){
+	LoRa_write(_LoRa, RegPaConfig, power);
+	HAL_Delay(10);
+}
 
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_read
@@ -273,7 +288,7 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_setFrequency(_LoRa, _LoRa->frequency);
 		
 		// set output power gain:
-			
+			LoRa_setPower(_LoRa, _LoRa->power);
 		
 		// set over current protection:
 		
