@@ -59,6 +59,7 @@ typedef struct LoRa_setting{
 	uint8_t						 bandWidth;
 	uint8_t						 crcRate;
 	float							 preamble;
+	uint8_t						 power;
 	
 } LoRa;
 

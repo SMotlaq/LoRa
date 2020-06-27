@@ -23,6 +23,7 @@ LoRa newLoRa(){
 	new_LoRa.spredingFactor = SF_7     ;
 	new_LoRa.bandWidth			= BW_125KHz;
 	new_LoRa.crcRate        = CR_4_5   ;
+	new_LoRa.power					= POWER_20db;
 	
 	return new_LoRa;
 }
@@ -272,6 +273,7 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_setFrequency(_LoRa, _LoRa->frequency);
 		
 		// set output power gain:
+			
 		
 		// set over current protection:
 		
