@@ -48,7 +48,7 @@ uint8_t rec[5];
 uint8_t data;
 int     debug_var = 0;
 
-LoRa myLoRa;
+//LoRa myLoRa;
 
 /* USER CODE END PV */
 
@@ -97,29 +97,24 @@ int main(void)
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
 
-	myLoRa = newLoRa();
+	LoRa myLoRa = newLoRa();
 	myLoRa.hSPIx                 = &hspi3;
 	myLoRa.CS_port               = NSS_GPIO_Port;
 	myLoRa.CS_pin                = NSS_Pin;
 	myLoRa.reset_port            = RESET_GPIO_Port;
 	myLoRa.reset_pin             = RESET_Pin;
+	
 	myLoRa.frequency             = 434;							  // default = 433 MHz
 	myLoRa.spredingFactor        = SF_9;							// default = SF_7
 	myLoRa.bandWidth			       = BW_250KHz;				  // default = BW_125KHz
 	myLoRa.crcRate				       = CR_4_8;						// default = CR_4_5
 	myLoRa.power					       = POWER_20db;				// default = 20db
 	myLoRa.overCurrentProtection = 130; 							// default = 100 mA
-	myLoRa.preamble				       = 8;								// default = 8;
+	myLoRa.preamble				       = 8;		  						// default = 8;
 	
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
 	
-	rec[0] = LoRa_read(&myLoRa, RegFrMsb       );
-	rec[1] = LoRa_read(&myLoRa, RegFrMid       );
-	rec[2] = LoRa_read(&myLoRa, RegFrLsb       );
-	rec[3] = LoRa_read(&myLoRa, RegPreambleMsb);
-	rec[4] = LoRa_read(&myLoRa, RegPreambleLsb);
-		
   /* USER CODE END 2 */
  
  
