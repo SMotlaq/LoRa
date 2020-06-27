@@ -200,6 +200,34 @@ void LoRa_setPower(LoRa* _LoRa, uint8_t power){
 }
 
 /* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setOCP
+
+		description : set maximum allowed current.
+
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+			int   current     --> desired max currnet in mA, e.g 120
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setOCP(LoRa* _LoRa, uint8_t current){
+	uint8_t	OcpTrim = 0;
+	
+	if(current<45)
+		current = 45;
+	if(current>240)
+		current = 240;
+	
+	if(current <= 120)
+		OcpTrim = (current - 45)/5;
+	else if(current <= 240)
+		OcpTrim = (current + 30)/10;
+	
+	LoRa_write(_LoRa, RegOcp, OcpTrim);
+	HAL_Delay(10);
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_read
 
 		description : read a register by an address
@@ -291,7 +319,8 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_setPower(_LoRa, _LoRa->power);
 		
 		// set over current protection:
-		
+			LoRa_setOCP(_LoRa, _LoRa->overCurrentProtection);
+			
 		// set LNA gain:
 		
 		// set spreading factor, CRC on, and Timeout Msb:

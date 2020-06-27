@@ -45,22 +45,27 @@
 #define RegFrMid					0x07
 #define RegFrLsb					0x08
 #define RegPaConfig				0x09
+#define RegOcp						0x0B
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
 
 typedef struct LoRa_setting{
+	
+	// Hardware setings:
 	GPIO_TypeDef*      CS_port;
 	uint16_t			     CS_pin;
 	GPIO_TypeDef*      reset_port;
 	uint16_t			     reset_pin;
 	SPI_HandleTypeDef* hSPIx;
 	
-	int 					     frequency;
-	uint8_t						 spredingFactor;
-	uint8_t						 bandWidth;
-	uint8_t						 crcRate;
-	float							 preamble;
-	uint8_t						 power;
+	// Module settings:
+	int 				frequency;
+	uint8_t			spredingFactor;
+	uint8_t			bandWidth;
+	uint8_t			crcRate;
+	float				preamble;
+	uint8_t			power;
+	uint8_t			overCurrentProtection;
 	
 } LoRa;
 
@@ -76,5 +81,5 @@ uint8_t LoRa_isvalid(LoRa* _LoRa);
 void LoRa_setFrequency(LoRa* _LoRa, int freq);
 void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
 void LoRa_setPower(LoRa* _LoRa, uint8_t power);
-
+void LoRa_setOCP(LoRa* _LoRa, uint8_t current);
 void LoRa_init(LoRa* _LoRa);
