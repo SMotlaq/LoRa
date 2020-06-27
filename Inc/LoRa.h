@@ -46,6 +46,7 @@
 #define RegFrLsb					0x08
 #define RegPaConfig				0x09
 #define RegOcp						0x0B
+#define RegLna						0x0C
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
 

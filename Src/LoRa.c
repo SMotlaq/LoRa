@@ -223,6 +223,7 @@ void LoRa_setOCP(LoRa* _LoRa, uint8_t current){
 	else if(current <= 240)
 		OcpTrim = (current + 30)/10;
 	
+	OcpTrim = OcpTrim + (1 << 5);
 	LoRa_write(_LoRa, RegOcp, OcpTrim);
 	HAL_Delay(10);
 }
@@ -322,6 +323,7 @@ void LoRa_init(LoRa* _LoRa){
 			LoRa_setOCP(_LoRa, _LoRa->overCurrentProtection);
 			
 		// set LNA gain:
+			LoRa_write(_LoRa, RegLna, 0x23);
 		
 		// set spreading factor, CRC on, and Timeout Msb:
 			
