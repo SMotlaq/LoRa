@@ -85,4 +85,4 @@ POWER_20db  20db
 ```
 ### Over current protection
 The max current must be a multiple of 5 if it is less than 120, and must be a multiple of 10 if it is greater than 120.
-Minimum value is 45 mA and maximum is 240 mA.
+Minimum value is 45 mA and maximum is 240 mA. See [this file](https://github.com/SMotlaq/LoRa_third/blob/master/OCP_values.xlsx?raw=true) to know allowed currents.
