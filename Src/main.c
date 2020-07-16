@@ -115,6 +115,11 @@ int main(void)
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
 	
+	//--------------------------------------
+	LoRa_gotoMode(&myLoRa, TRANSMIT_MODE);
+	
+	
+	//--------------------------------------
   /* USER CODE END 2 */
  
  
