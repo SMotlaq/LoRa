@@ -6,6 +6,9 @@
 //--------- MODES ---------//
 #define SLEEP_MODE				0
 #define	STNBY_MODE				1
+#define TRANSMIT_MODE			3
+#define RXCONTIN_MODE			5
+#define RXSINGLE_MODE			6
 
 //------- BANDWIDTH -------//
 #define BW_7_8KHz					0

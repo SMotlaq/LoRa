@@ -62,11 +62,19 @@ void LoRa_gotoMode(LoRa* _LoRa, int mode){
 	uint8_t    data;
 	
 	read = LoRa_read(_LoRa, RegOpMode);
+	data = read;
 	
 	if(mode == SLEEP_MODE)
-		data = read & 0xF8;
+		data = (read & 0xF8) | 0x00;
 	else if (mode == STNBY_MODE)
 		data = (read & 0xF8) | 0x01;
+	else if (mode == TRANSMIT_MODE)
+		data = (read & 0xF8) | 0x03;
+	else if (mode == RXCONTIN_MODE)
+		data = (read & 0xF8) | 0x05;
+	else if (mode == RXSINGLE_MODE)
+		data = (read & 0xF8) | 0x06;
+	
 	
 	LoRa_write(_LoRa, RegOpMode, data);
 	HAL_Delay(10);

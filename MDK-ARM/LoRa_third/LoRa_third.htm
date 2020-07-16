@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\LoRa_third\LoRa_third.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\LoRa_third\LoRa_third.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Jun 27 16:59:05 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 16 15:03:49 2020
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -310,7 +310,6 @@ Global Symbols
 
 <P><STRONG><a name="[78]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[80]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
@@ -381,9 +380,9 @@ Global Symbols
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setPower
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setOCP
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setFrequency
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -546,7 +545,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
-<P><STRONG><a name="[64]"></a>LoRa_gotoMode</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, lora.o(i.LoRa_gotoMode))
+<P><STRONG><a name="[64]"></a>LoRa_gotoMode</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, lora.o(i.LoRa_gotoMode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = LoRa_gotoMode &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_write
@@ -565,8 +564,8 @@ Global Symbols
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setPower
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setOCP
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setFrequency
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -582,7 +581,6 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setSpreadingFactor
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[6d]"></a>LoRa_readReg</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, lora.o(i.LoRa_readReg))
@@ -724,19 +722,17 @@ Global Symbols
 
 <P><STRONG><a name="[89]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 168 bytes, Stack size 32 bytes, main.o(i.main))
+<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = main &rArr; LoRa_init &rArr; LoRa_setSpreadingFactor &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_reset
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI3_Init
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
