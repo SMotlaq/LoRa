@@ -315,9 +315,6 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t length){
-	uint8_t data;
-	uint8_t addr;
-	
 	for(int i=0; i<length; i++){
 		LoRa_write(_LoRa, address, value[i]);
 	}
