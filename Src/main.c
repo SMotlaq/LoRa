@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "LoRa.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -117,9 +118,18 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	//--------------------------------------
-	char*   send_data;
-	send_data = "Hello world!";
-	LoRa_transmit(&myLoRa, (uint8_t*)send_data, 12, 100);
+	uint8_t  send_data[7];
+	send_data[0] = 72;
+	send_data[1] = 101;
+	send_data[2] = 108;
+	send_data[3] = 108;
+	send_data[4] = 111;
+	send_data[5] = 32;
+
+	for(int i=0; i<10; i++){
+		send_data[6] = 48+i;
+		LoRa_transmit(&myLoRa, (uint8_t*)send_data, 7, 100);
+	}
 	//--------------------------------------
   /* USER CODE END 2 */
  
