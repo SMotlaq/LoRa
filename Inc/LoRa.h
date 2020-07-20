@@ -54,11 +54,13 @@
 #define RegFiFoAddPtr			0x0D
 #define RegFiFoTxBaseAddr	0x0E
 #define RegFiFoRxBaseAddr	0x0F
+#define RegIrqFlags				0x12
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
 #define RegSymbTimeoutL		0x1F
 #define RegPreambleMsb		0x20
 #define RegPreambleLsb		0x21
+#define RegPayloadLength	0x22
 
 
 typedef struct LoRa_setting{
@@ -96,5 +98,6 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
 void LoRa_setPower(LoRa* _LoRa, uint8_t power);
 void LoRa_setOCP(LoRa* _LoRa, uint8_t current);
 void LoRa_setTOMsb_setCRCon(LoRa* _LoRa);
+uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout);
 
 void LoRa_init(LoRa* _LoRa);

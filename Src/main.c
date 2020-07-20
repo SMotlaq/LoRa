@@ -47,7 +47,7 @@ SPI_HandleTypeDef hspi3;
 uint8_t rec[5];
 uint8_t data;
 int     debug_var = 0;
-uint8_t send_data[2];
+uint8_t read;
 //LoRa myLoRa;
 
 /* USER CODE END PV */
@@ -105,10 +105,10 @@ int main(void)
 	myLoRa.reset_port            = RESET_GPIO_Port;
 	myLoRa.reset_pin             = RESET_Pin;
 	
-	myLoRa.frequency             = 434;							  // default = 433 MHz
-	myLoRa.spredingFactor        = SF_9;							// default = SF_7
-	myLoRa.bandWidth			       = BW_250KHz;				  // default = BW_125KHz
-	myLoRa.crcRate				       = CR_4_8;						// default = CR_4_5
+	myLoRa.frequency             = 433;							  // default = 433 MHz
+	myLoRa.spredingFactor        = SF_7;							// default = SF_7
+	myLoRa.bandWidth			       = BW_125KHz;				  // default = BW_125KHz
+	myLoRa.crcRate				       = CR_4_5;						// default = CR_4_5
 	myLoRa.power					       = POWER_20db;				// default = 20db
 	myLoRa.overCurrentProtection = 130; 							// default = 100 mA
 	myLoRa.preamble				       = 8;		  						// default = 8;
@@ -117,15 +117,9 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	//--------------------------------------
-	uint8_t read;
-	send_data[0] = 14;
-	send_data[1] = 34;
-	read = LoRa_read(&myLoRa, RegFiFoTxBaseAddr);
-	LoRa_write(&myLoRa, RegFiFoAddPtr, read);
-	LoRa_BurstWrite(&myLoRa, RegFiFo, send_data, 2);
-	LoRa_gotoMode(&myLoRa, TRANSMIT_MODE);
-	
-	
+	char*   send_data;
+	send_data = "Hello world!";
+	LoRa_transmit(&myLoRa, (uint8_t*)send_data, 12, 100);
 	//--------------------------------------
   /* USER CODE END 2 */
  

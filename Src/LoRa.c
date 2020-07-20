@@ -315,10 +315,22 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t length){
-	for(int i=0; i<length; i++){
-		LoRa_write(_LoRa, address, value[i]);
-	}
+	uint8_t addr;
+	addr = address | 0x80;
+	
+	//NSS = 1
+	HAL_GPIO_WritePin(_LoRa->CS_port, _LoRa->CS_pin, GPIO_PIN_RESET);
+	//say module thai I want to write in RegFiFo
+	HAL_SPI_Transmit(_LoRa->hSPIx, &addr, 1, TRANSMIT_TIMEOUT);
+	while (HAL_SPI_GetState(_LoRa->hSPIx) != HAL_SPI_STATE_READY)
+		;
+	//Write data in FiFo
+	HAL_SPI_Transmit(_LoRa->hSPIx, value, length, TRANSMIT_TIMEOUT);	
+	while (HAL_SPI_GetState(_LoRa->hSPIx) != HAL_SPI_STATE_READY)
+		;
+	//NSS = 0
 	HAL_Delay(5);
+	HAL_GPIO_WritePin(_LoRa->CS_port, _LoRa->CS_pin, GPIO_PIN_SET);
 }
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_isvalid
@@ -333,6 +345,40 @@ void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t lengt
 uint8_t LoRa_isvalid(LoRa* _LoRa){
 	
 	return 1;
+}
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_transmit
+
+		description : Transmit data
+
+		arguments   : 
+			LoRa*    LoRa     --> LoRa object handler
+			uint8_t  data			--> A pointer to the data you wanna send
+			uint8_t	 length   --> Size of your data in Bytes
+			uint16_t timeOut	--> Timeout in mili seconds
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout){
+	uint8_t read;
+	
+	read = LoRa_read(_LoRa, RegFiFoTxBaseAddr);
+	LoRa_write(_LoRa, RegFiFoAddPtr, read);	
+	LoRa_write(_LoRa, RegPayloadLength, length);
+	LoRa_BurstWrite(_LoRa, RegFiFo, data, length);
+	LoRa_gotoMode(_LoRa, TRANSMIT_MODE);
+	while(1){
+		read = LoRa_read(_LoRa, RegIrqFlags);
+		if((read & 0x08)!=0){
+			LoRa_write(_LoRa, RegIrqFlags, 0xFF);
+			return 1;
+		}
+		else{
+			if(--timeout==0)
+				return 0;
+		}
+		HAL_Delay(1);
+	}
 }
 
 /* ----------------------------------------------------------------------------- *\
@@ -396,4 +442,3 @@ void LoRa_init(LoRa* _LoRa){
 			HAL_Delay(10);
 	}
 }
-
