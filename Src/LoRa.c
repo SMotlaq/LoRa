@@ -290,7 +290,7 @@ uint8_t LoRa_read(LoRa* _LoRa, uint8_t address){
 			uint8_t address     -->	address of the register e.g 0x1D
 			uint8_t value       --> value that you want to write
 
-		returns     : register value
+		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 	uint8_t data;
@@ -302,6 +302,27 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 	HAL_Delay(5);
 }
 
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_BurstWrite
+
+		description : write a set of values in a register by an address respectively
+									
+		arguments   : 
+			LoRa*   LoRa        --> LoRa object handler
+			uint8_t address     -->	address of the register e.g 0x1D
+			uint8_t *value      --> address of values that you want to write
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t length){
+	uint8_t data;
+	uint8_t addr;
+	
+	for(int i=0; i<length; i++){
+		LoRa_write(_LoRa, address, value[i]);
+	}
+	HAL_Delay(5);
+}
 /* ----------------------------------------------------------------------------- *\
 		name        : LoRa_isvalid
 
