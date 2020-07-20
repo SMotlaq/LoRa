@@ -275,7 +275,7 @@ uint8_t LoRa_read(LoRa* _LoRa, uint8_t address){
 	
 	data_addr = address & 0x7F;
 	LoRa_readReg(_LoRa, &data_addr, 1, &read_data, 1);
-	HAL_Delay(5);
+	//HAL_Delay(5);
 	
 	return read_data;
 }
@@ -299,7 +299,7 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value){
 	addr = address | 0x80;
 	data = value;
 	LoRa_writeReg(_LoRa, &addr, 1, &data, 1);
-	HAL_Delay(5);
+	//HAL_Delay(5);
 }
 
 /* ----------------------------------------------------------------------------- *\
@@ -329,7 +329,7 @@ void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t lengt
 	while (HAL_SPI_GetState(_LoRa->hSPIx) != HAL_SPI_STATE_READY)
 		;
 	//NSS = 0
-	HAL_Delay(5);
+	//HAL_Delay(5);
 	HAL_GPIO_WritePin(_LoRa->CS_port, _LoRa->CS_pin, GPIO_PIN_SET);
 }
 /* ----------------------------------------------------------------------------- *\
