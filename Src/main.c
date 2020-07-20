@@ -47,7 +47,7 @@ SPI_HandleTypeDef hspi3;
 uint8_t rec[5];
 uint8_t data;
 int     debug_var = 0;
-
+uint8_t send_data[2];
 //LoRa myLoRa;
 
 /* USER CODE END PV */
@@ -98,6 +98,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
 	LoRa myLoRa = newLoRa();
+	
 	myLoRa.hSPIx                 = &hspi3;
 	myLoRa.CS_port               = NSS_GPIO_Port;
 	myLoRa.CS_pin                = NSS_Pin;
@@ -116,6 +117,12 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	//--------------------------------------
+	uint8_t read;
+	send_data[0] = 14;
+	send_data[1] = 34;
+	read = LoRa_read(&myLoRa, RegFiFoTxBaseAddr);
+	LoRa_write(&myLoRa, RegFiFoAddPtr, read);
+	LoRa_BurstWrite(&myLoRa, RegFiFo, send_data, 2);
 	LoRa_gotoMode(&myLoRa, TRANSMIT_MODE);
 	
 	
