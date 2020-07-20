@@ -356,8 +356,8 @@ uint8_t LoRa_isvalid(LoRa* _LoRa){
 			LoRa*    LoRa     --> LoRa object handler
 			uint8_t  data			--> A pointer to the data you wanna send
 			uint8_t	 length   --> Size of your data in Bytes
-			uint16_t timeOut	--> Timeout in mili seconds
-		returns     : Nothing
+			uint16_t timeOut	--> Timeout in milliseconds
+		returns     : 1 in case of success, 0 in case of timeout
 \* ----------------------------------------------------------------------------- */
 uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout){
 	uint8_t read;
