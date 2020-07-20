@@ -43,6 +43,7 @@
 #define POWER_20db				0xFF
 
 //------- REGISTERS -------//
+#define RegFiFo						0x00
 #define RegOpMode					0x01
 #define RegFrMsb					0x06
 #define RegFrMid					0x07
@@ -87,6 +88,7 @@ void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* va
 void LoRa_gotoMode(LoRa* _LoRa, int mode);
 uint8_t LoRa_read(LoRa* _LoRa, uint8_t address);
 void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value);
+void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t length);
 uint8_t LoRa_isvalid(LoRa* _LoRa);
 
 void LoRa_setFrequency(LoRa* _LoRa, int freq);
