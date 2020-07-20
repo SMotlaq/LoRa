@@ -50,6 +50,9 @@
 #define RegPaConfig				0x09
 #define RegOcp						0x0B
 #define RegLna						0x0C
+#define RegFiFoAddPtr			0x0D
+#define RegFiFoTxBaseAddr	0x0E
+#define RegFiFoRxBaseAddr	0x0F
 #define	RegModemConfig1		0x1D
 #define RegModemConfig2		0x1E
 #define RegSymbTimeoutL		0x1F
