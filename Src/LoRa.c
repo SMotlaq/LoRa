@@ -414,9 +414,9 @@ void LoRa_startReceiving(LoRa* _LoRa){
 		arguments   : 
 			LoRa*    LoRa     --> LoRa object handler
 			uint8_t  data			--> A pointer to the array that you want to write bytes in it
-			uint8_t	 length   --> Size of your desired in Bytes
+			uint8_t	 length   --> Determines how many bytes you want to read
 
-returns     : Nothing
+		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
 void LoRa_Receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 	uint8_t read;
