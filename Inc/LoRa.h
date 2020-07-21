@@ -1,3 +1,12 @@
+// -------------------------------------------------- \\
+// |                                                | \\
+// |            WRITTEN BY: Sslman Motlaq           | \\
+// |               Telegram: @S_Motlaq              | \\
+// |            E-MAIL:  motlaq@aut.ac.ir           | \\
+// |                                                | \\
+// -------------------------------------------------- //
+
+// include your suitable library here:
 #include "stm32f4xx_hal.h"
 
 #define TRANSMIT_TIMEOUT	2000

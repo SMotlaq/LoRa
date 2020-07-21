@@ -24,7 +24,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "LoRa.h"
-#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,9 +44,7 @@
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
-uint8_t read_data[12];
-uint8_t data;
-int     debug_var = 0;
+uint8_t read_data[10];
 //LoRa myLoRa;
 
 /* USER CODE END PV */
@@ -96,7 +93,8 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
-
+	
+	// MODULE SETTINGS ----------------------------------------------
 	LoRa myLoRa = newLoRa();
 	
 	myLoRa.hSPIx                 = &hspi3;
@@ -116,22 +114,23 @@ int main(void)
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
 	
-	//--------------------------------------
+	// START CONTINUOUS RECEIVING -----------------------------------
 	LoRa_startReceiving(&myLoRa);
 	
-	//--------------------------------------
+	//---------------------------------------------------------------
+	
   /* USER CODE END 2 */
  
  
-		debug_var++;
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		//debug_var++;
-		HAL_Delay(10000);
-		LoRa_Receive(&myLoRa, read_data, 4);
+		
+		// READING 10 BYTES FROM BUFFER --------------------------------
+		LoRa_Receive(&myLoRa, read_data, 10);
+		HAL_Delay(500);
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
