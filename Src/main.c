@@ -45,10 +45,9 @@
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
-uint8_t rec[5];
+uint8_t read_data[12];
 uint8_t data;
 int     debug_var = 0;
-uint8_t read;
 //LoRa myLoRa;
 
 /* USER CODE END PV */
@@ -118,29 +117,21 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	//--------------------------------------
-	uint8_t  send_data[7];
-	send_data[0] = 72;
-	send_data[1] = 101;
-	send_data[2] = 108;
-	send_data[3] = 108;
-	send_data[4] = 111;
-	send_data[5] = 32;
-
-	for(int i=0; i<10; i++){
-		send_data[6] = 48+i;
-		LoRa_transmit(&myLoRa, (uint8_t*)send_data, 7, 100);
-	}
+	LoRa_startReceiving(&myLoRa);
+	
 	//--------------------------------------
   /* USER CODE END 2 */
  
  
+		debug_var++;
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		debug_var++;
-		HAL_Delay(3000);
+		//debug_var++;
+		HAL_Delay(10000);
+		LoRa_Receive(&myLoRa, read_data, 4);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

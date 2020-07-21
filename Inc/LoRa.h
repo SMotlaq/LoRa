@@ -43,24 +43,26 @@
 #define POWER_20db				0xFF
 
 //------- REGISTERS -------//
-#define RegFiFo						0x00
-#define RegOpMode					0x01
-#define RegFrMsb					0x06
-#define RegFrMid					0x07
-#define RegFrLsb					0x08
-#define RegPaConfig				0x09
-#define RegOcp						0x0B
-#define RegLna						0x0C
-#define RegFiFoAddPtr			0x0D
-#define RegFiFoTxBaseAddr	0x0E
-#define RegFiFoRxBaseAddr	0x0F
-#define RegIrqFlags				0x12
-#define	RegModemConfig1		0x1D
-#define RegModemConfig2		0x1E
-#define RegSymbTimeoutL		0x1F
-#define RegPreambleMsb		0x20
-#define RegPreambleLsb		0x21
-#define RegPayloadLength	0x22
+#define RegFiFo								0x00
+#define RegOpMode							0x01
+#define RegFrMsb							0x06
+#define RegFrMid							0x07
+#define RegFrLsb							0x08
+#define RegPaConfig						0x09
+#define RegOcp								0x0B
+#define RegLna								0x0C
+#define RegFiFoAddPtr					0x0D
+#define RegFiFoTxBaseAddr			0x0E
+#define RegFiFoRxBaseAddr			0x0F
+#define RegFiFoRxCurrentAddr	0x10
+#define RegIrqFlags						0x12
+#define RegRxNbBytes					0x13
+#define	RegModemConfig1				0x1D
+#define RegModemConfig2				0x1E
+#define RegSymbTimeoutL				0x1F
+#define RegPreambleMsb				0x20
+#define RegPreambleLsb				0x21
+#define RegPayloadLength			0x22
 
 
 typedef struct LoRa_setting{
@@ -100,5 +102,7 @@ void LoRa_setPower(LoRa* _LoRa, uint8_t power);
 void LoRa_setOCP(LoRa* _LoRa, uint8_t current);
 void LoRa_setTOMsb_setCRCon(LoRa* _LoRa);
 uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout);
+void LoRa_startReceiving(LoRa* _LoRa);
+void LoRa_Receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
 
 void LoRa_init(LoRa* _LoRa);

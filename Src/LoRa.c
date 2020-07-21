@@ -1,5 +1,5 @@
 #include "LoRa.h"
-
+#include <math.h>
 /* ----------------------------------------------------------------------------- *\
 		name        : newLoRa
 
@@ -367,6 +367,8 @@ uint8_t LoRa_isvalid(LoRa* _LoRa){
 uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout){
 	uint8_t read;
 	
+	int mode = _LoRa->current_mode;
+	LoRa_gotoMode(_LoRa, STNBY_MODE);
 	read = LoRa_read(_LoRa, RegFiFoTxBaseAddr);
 	LoRa_write(_LoRa, RegFiFoAddPtr, read);	
 	LoRa_write(_LoRa, RegPayloadLength, length);
@@ -376,14 +378,63 @@ uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeo
 		read = LoRa_read(_LoRa, RegIrqFlags);
 		if((read & 0x08)!=0){
 			LoRa_write(_LoRa, RegIrqFlags, 0xFF);
+			LoRa_gotoMode(_LoRa, mode);
 			return 1;
 		}
 		else{
-			if(--timeout==0)
+			if(--timeout==0){
+				LoRa_gotoMode(_LoRa, mode);
 				return 0;
+			}
 		}
 		HAL_Delay(1);
 	}
+	
+}
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_startReceiving
+
+		description : Start receiving continuously
+
+		arguments   : 
+			LoRa*    LoRa     --> LoRa object handler
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_startReceiving(LoRa* _LoRa){
+	LoRa_gotoMode(_LoRa, RXCONTIN_MODE);
+}
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_Receive
+
+		description : Read received data from module
+
+		arguments   : 
+			LoRa*    LoRa     --> LoRa object handler
+			uint8_t  data			--> A pointer to the array that you want to write bytes in it
+			uint8_t	 length   --> Size of your desired in Bytes
+
+returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_Receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
+	uint8_t read;
+	uint8_t number_of_bytes;
+	uint8_t min;
+	
+	LoRa_gotoMode(_LoRa, STNBY_MODE);
+	read = LoRa_read(_LoRa, RegIrqFlags);
+	if((read & 0x40) != 0){
+		LoRa_write(_LoRa, RegIrqFlags, 0xFF);
+		number_of_bytes = LoRa_read(_LoRa, RegRxNbBytes);
+		read = LoRa_read(_LoRa, RegFiFoRxCurrentAddr);
+		LoRa_write(_LoRa, RegFiFoAddPtr, read);
+		min = length >= number_of_bytes ? number_of_bytes : length;
+		for(int i=0; i<min; i++)
+			data[i] = LoRa_read(_LoRa, RegFiFo);
+	}
+	LoRa_gotoMode(_LoRa, RXCONTIN_MODE);
 }
 
 /* ----------------------------------------------------------------------------- *\

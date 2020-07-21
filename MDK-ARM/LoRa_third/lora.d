@@ -29,3 +29,4 @@
 .\lora_third\lora.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 .\lora_third\lora.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 .\lora_third\lora.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+.\lora_third\lora.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
