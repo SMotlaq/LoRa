@@ -689,44 +689,44 @@ Image Symbol Table
     i.HardFault_Handler                      0x0800108e   Section        0  stm32f4xx_it.o(i.HardFault_Handler)
     i.LoRa_BurstWrite                        0x08001090   Section        0  lora.o(i.LoRa_BurstWrite)
     i.LoRa_gotoMode                          0x080010e6   Section        0  lora.o(i.LoRa_gotoMode)
-    i.LoRa_init                              0x0800113e   Section        0  lora.o(i.LoRa_init)
-    i.LoRa_read                              0x080011e6   Section        0  lora.o(i.LoRa_read)
-    i.LoRa_readReg                           0x08001204   Section        0  lora.o(i.LoRa_readReg)
-    i.LoRa_reset                             0x0800125c   Section        0  lora.o(i.LoRa_reset)
-    i.LoRa_setFrequency                      0x08001284   Section        0  lora.o(i.LoRa_setFrequency)
-    i.LoRa_setOCP                            0x080012c4   Section        0  lora.o(i.LoRa_setOCP)
-    i.LoRa_setPower                          0x08001302   Section        0  lora.o(i.LoRa_setPower)
-    i.LoRa_setSpreadingFactor                0x08001316   Section        0  lora.o(i.LoRa_setSpreadingFactor)
-    i.LoRa_setTOMsb_setCRCon                 0x08001350   Section        0  lora.o(i.LoRa_setTOMsb_setCRCon)
-    i.LoRa_transmit                          0x08001370   Section        0  lora.o(i.LoRa_transmit)
-    i.LoRa_write                             0x080013da   Section        0  lora.o(i.LoRa_write)
-    i.LoRa_writeReg                          0x080013f8   Section        0  lora.o(i.LoRa_writeReg)
-    i.MX_GPIO_Init                           0x08001450   Section        0  main.o(i.MX_GPIO_Init)
-    MX_GPIO_Init                             0x08001451   Thumb Code   134  main.o(i.MX_GPIO_Init)
-    i.MX_SPI3_Init                           0x080014e0   Section        0  main.o(i.MX_SPI3_Init)
-    MX_SPI3_Init                             0x080014e1   Thumb Code    44  main.o(i.MX_SPI3_Init)
-    i.MemManage_Handler                      0x08001514   Section        0  stm32f4xx_it.o(i.MemManage_Handler)
-    i.NMI_Handler                            0x08001516   Section        0  stm32f4xx_it.o(i.NMI_Handler)
-    i.PendSV_Handler                         0x08001518   Section        0  stm32f4xx_it.o(i.PendSV_Handler)
-    i.SPI_EndRxTransaction                   0x0800151a   Section        0  stm32f4xx_hal_spi.o(i.SPI_EndRxTransaction)
-    SPI_EndRxTransaction                     0x0800151b   Thumb Code    92  stm32f4xx_hal_spi.o(i.SPI_EndRxTransaction)
-    i.SPI_EndRxTxTransaction                 0x08001578   Section        0  stm32f4xx_hal_spi.o(i.SPI_EndRxTxTransaction)
-    SPI_EndRxTxTransaction                   0x08001579   Thumb Code    80  stm32f4xx_hal_spi.o(i.SPI_EndRxTxTransaction)
-    i.SPI_WaitFlagStateUntilTimeout          0x080015d0   Section        0  stm32f4xx_hal_spi.o(i.SPI_WaitFlagStateUntilTimeout)
-    SPI_WaitFlagStateUntilTimeout            0x080015d1   Thumb Code   148  stm32f4xx_hal_spi.o(i.SPI_WaitFlagStateUntilTimeout)
-    i.SVC_Handler                            0x08001664   Section        0  stm32f4xx_it.o(i.SVC_Handler)
-    i.SysTick_Handler                        0x08001666   Section        0  stm32f4xx_it.o(i.SysTick_Handler)
-    i.SystemClock_Config                     0x0800166c   Section        0  main.o(i.SystemClock_Config)
-    i.SystemInit                             0x080016ec   Section        0  system_stm32f4xx.o(i.SystemInit)
-    i.UsageFault_Handler                     0x08001708   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
-    i.__NVIC_SetPriority                     0x0800170a   Section        0  stm32f4xx_hal_cortex.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x0800170b   Thumb Code    32  stm32f4xx_hal_cortex.o(i.__NVIC_SetPriority)
-    i.__scatterload_copy                     0x0800172a   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08001738   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800173a   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x08001748   Section        0  main.o(i.main)
-    i.newLoRa                                0x0800180c   Section        0  lora.o(i.newLoRa)
-    .constdata                               0x08001844   Section       16  system_stm32f4xx.o(.constdata)
+    i.LoRa_init                              0x08001152   Section        0  lora.o(i.LoRa_init)
+    i.LoRa_read                              0x08001204   Section        0  lora.o(i.LoRa_read)
+    i.LoRa_readReg                           0x08001222   Section        0  lora.o(i.LoRa_readReg)
+    i.LoRa_reset                             0x0800127a   Section        0  lora.o(i.LoRa_reset)
+    i.LoRa_setFrequency                      0x080012a2   Section        0  lora.o(i.LoRa_setFrequency)
+    i.LoRa_setOCP                            0x080012e2   Section        0  lora.o(i.LoRa_setOCP)
+    i.LoRa_setPower                          0x08001320   Section        0  lora.o(i.LoRa_setPower)
+    i.LoRa_setSpreadingFactor                0x08001334   Section        0  lora.o(i.LoRa_setSpreadingFactor)
+    i.LoRa_setTOMsb_setCRCon                 0x0800136e   Section        0  lora.o(i.LoRa_setTOMsb_setCRCon)
+    i.LoRa_transmit                          0x0800138e   Section        0  lora.o(i.LoRa_transmit)
+    i.LoRa_write                             0x080013f8   Section        0  lora.o(i.LoRa_write)
+    i.LoRa_writeReg                          0x08001416   Section        0  lora.o(i.LoRa_writeReg)
+    i.MX_GPIO_Init                           0x08001470   Section        0  main.o(i.MX_GPIO_Init)
+    MX_GPIO_Init                             0x08001471   Thumb Code   134  main.o(i.MX_GPIO_Init)
+    i.MX_SPI3_Init                           0x08001500   Section        0  main.o(i.MX_SPI3_Init)
+    MX_SPI3_Init                             0x08001501   Thumb Code    44  main.o(i.MX_SPI3_Init)
+    i.MemManage_Handler                      0x08001534   Section        0  stm32f4xx_it.o(i.MemManage_Handler)
+    i.NMI_Handler                            0x08001536   Section        0  stm32f4xx_it.o(i.NMI_Handler)
+    i.PendSV_Handler                         0x08001538   Section        0  stm32f4xx_it.o(i.PendSV_Handler)
+    i.SPI_EndRxTransaction                   0x0800153a   Section        0  stm32f4xx_hal_spi.o(i.SPI_EndRxTransaction)
+    SPI_EndRxTransaction                     0x0800153b   Thumb Code    92  stm32f4xx_hal_spi.o(i.SPI_EndRxTransaction)
+    i.SPI_EndRxTxTransaction                 0x08001598   Section        0  stm32f4xx_hal_spi.o(i.SPI_EndRxTxTransaction)
+    SPI_EndRxTxTransaction                   0x08001599   Thumb Code    80  stm32f4xx_hal_spi.o(i.SPI_EndRxTxTransaction)
+    i.SPI_WaitFlagStateUntilTimeout          0x080015f0   Section        0  stm32f4xx_hal_spi.o(i.SPI_WaitFlagStateUntilTimeout)
+    SPI_WaitFlagStateUntilTimeout            0x080015f1   Thumb Code   148  stm32f4xx_hal_spi.o(i.SPI_WaitFlagStateUntilTimeout)
+    i.SVC_Handler                            0x08001684   Section        0  stm32f4xx_it.o(i.SVC_Handler)
+    i.SysTick_Handler                        0x08001686   Section        0  stm32f4xx_it.o(i.SysTick_Handler)
+    i.SystemClock_Config                     0x0800168c   Section        0  main.o(i.SystemClock_Config)
+    i.SystemInit                             0x0800170c   Section        0  system_stm32f4xx.o(i.SystemInit)
+    i.UsageFault_Handler                     0x08001728   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
+    i.__NVIC_SetPriority                     0x0800172a   Section        0  stm32f4xx_hal_cortex.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x0800172b   Thumb Code    32  stm32f4xx_hal_cortex.o(i.__NVIC_SetPriority)
+    i.__scatterload_copy                     0x0800174a   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08001758   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0800175a   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x08001768   Section        0  main.o(i.main)
+    i.newLoRa                                0x0800182c   Section        0  lora.o(i.newLoRa)
+    .constdata                               0x08001864   Section       16  system_stm32f4xx.o(.constdata)
     .data                                    0x20000000   Section        4  main.o(.data)
     .data                                    0x20000004   Section       12  stm32f4xx_hal.o(.data)
     .data                                    0x20000010   Section        4  system_stm32f4xx.o(.data)
@@ -855,35 +855,35 @@ Image Symbol Table
     HAL_SYSTICK_Config                       0x08001067   Thumb Code    40  stm32f4xx_hal_cortex.o(i.HAL_SYSTICK_Config)
     HardFault_Handler                        0x0800108f   Thumb Code     2  stm32f4xx_it.o(i.HardFault_Handler)
     LoRa_BurstWrite                          0x08001091   Thumb Code    86  lora.o(i.LoRa_BurstWrite)
-    LoRa_gotoMode                            0x080010e7   Thumb Code    88  lora.o(i.LoRa_gotoMode)
-    LoRa_init                                0x0800113f   Thumb Code   168  lora.o(i.LoRa_init)
-    LoRa_read                                0x080011e7   Thumb Code    30  lora.o(i.LoRa_read)
-    LoRa_readReg                             0x08001205   Thumb Code    88  lora.o(i.LoRa_readReg)
-    LoRa_reset                               0x0800125d   Thumb Code    40  lora.o(i.LoRa_reset)
-    LoRa_setFrequency                        0x08001285   Thumb Code    64  lora.o(i.LoRa_setFrequency)
-    LoRa_setOCP                              0x080012c5   Thumb Code    62  lora.o(i.LoRa_setOCP)
-    LoRa_setPower                            0x08001303   Thumb Code    20  lora.o(i.LoRa_setPower)
-    LoRa_setSpreadingFactor                  0x08001317   Thumb Code    58  lora.o(i.LoRa_setSpreadingFactor)
-    LoRa_setTOMsb_setCRCon                   0x08001351   Thumb Code    32  lora.o(i.LoRa_setTOMsb_setCRCon)
-    LoRa_transmit                            0x08001371   Thumb Code   106  lora.o(i.LoRa_transmit)
-    LoRa_write                               0x080013db   Thumb Code    30  lora.o(i.LoRa_write)
-    LoRa_writeReg                            0x080013f9   Thumb Code    88  lora.o(i.LoRa_writeReg)
-    MemManage_Handler                        0x08001515   Thumb Code     2  stm32f4xx_it.o(i.MemManage_Handler)
-    NMI_Handler                              0x08001517   Thumb Code     2  stm32f4xx_it.o(i.NMI_Handler)
-    PendSV_Handler                           0x08001519   Thumb Code     2  stm32f4xx_it.o(i.PendSV_Handler)
-    SVC_Handler                              0x08001665   Thumb Code     2  stm32f4xx_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x08001667   Thumb Code     4  stm32f4xx_it.o(i.SysTick_Handler)
-    SystemClock_Config                       0x0800166d   Thumb Code   120  main.o(i.SystemClock_Config)
-    SystemInit                               0x080016ed   Thumb Code    22  system_stm32f4xx.o(i.SystemInit)
-    UsageFault_Handler                       0x08001709   Thumb Code     2  stm32f4xx_it.o(i.UsageFault_Handler)
-    __scatterload_copy                       0x0800172b   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08001739   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800173b   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x08001749   Thumb Code   182  main.o(i.main)
-    newLoRa                                  0x0800180d   Thumb Code    56  lora.o(i.newLoRa)
-    AHBPrescTable                            0x08001844   Data          16  system_stm32f4xx.o(.constdata)
-    Region$$Table$$Base                      0x08001854   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001874   Number         0  anon$$obj.o(Region$$Table)
+    LoRa_gotoMode                            0x080010e7   Thumb Code   108  lora.o(i.LoRa_gotoMode)
+    LoRa_init                                0x08001153   Thumb Code   178  lora.o(i.LoRa_init)
+    LoRa_read                                0x08001205   Thumb Code    30  lora.o(i.LoRa_read)
+    LoRa_readReg                             0x08001223   Thumb Code    88  lora.o(i.LoRa_readReg)
+    LoRa_reset                               0x0800127b   Thumb Code    40  lora.o(i.LoRa_reset)
+    LoRa_setFrequency                        0x080012a3   Thumb Code    64  lora.o(i.LoRa_setFrequency)
+    LoRa_setOCP                              0x080012e3   Thumb Code    62  lora.o(i.LoRa_setOCP)
+    LoRa_setPower                            0x08001321   Thumb Code    20  lora.o(i.LoRa_setPower)
+    LoRa_setSpreadingFactor                  0x08001335   Thumb Code    58  lora.o(i.LoRa_setSpreadingFactor)
+    LoRa_setTOMsb_setCRCon                   0x0800136f   Thumb Code    32  lora.o(i.LoRa_setTOMsb_setCRCon)
+    LoRa_transmit                            0x0800138f   Thumb Code   106  lora.o(i.LoRa_transmit)
+    LoRa_write                               0x080013f9   Thumb Code    30  lora.o(i.LoRa_write)
+    LoRa_writeReg                            0x08001417   Thumb Code    88  lora.o(i.LoRa_writeReg)
+    MemManage_Handler                        0x08001535   Thumb Code     2  stm32f4xx_it.o(i.MemManage_Handler)
+    NMI_Handler                              0x08001537   Thumb Code     2  stm32f4xx_it.o(i.NMI_Handler)
+    PendSV_Handler                           0x08001539   Thumb Code     2  stm32f4xx_it.o(i.PendSV_Handler)
+    SVC_Handler                              0x08001685   Thumb Code     2  stm32f4xx_it.o(i.SVC_Handler)
+    SysTick_Handler                          0x08001687   Thumb Code     4  stm32f4xx_it.o(i.SysTick_Handler)
+    SystemClock_Config                       0x0800168d   Thumb Code   120  main.o(i.SystemClock_Config)
+    SystemInit                               0x0800170d   Thumb Code    22  system_stm32f4xx.o(i.SystemInit)
+    UsageFault_Handler                       0x08001729   Thumb Code     2  stm32f4xx_it.o(i.UsageFault_Handler)
+    __scatterload_copy                       0x0800174b   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08001759   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0800175b   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x08001769   Thumb Code   182  main.o(i.main)
+    newLoRa                                  0x0800182d   Thumb Code    56  lora.o(i.newLoRa)
+    AHBPrescTable                            0x08001864   Data          16  system_stm32f4xx.o(.constdata)
+    Region$$Table$$Base                      0x08001874   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001894   Number         0  anon$$obj.o(Region$$Table)
     debug_var                                0x20000000   Data           4  main.o(.data)
     uwTickFreq                               0x20000004   Data           1  stm32f4xx_hal.o(.data)
     uwTickPrio                               0x20000008   Data           4  stm32f4xx_hal.o(.data)
@@ -900,9 +900,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000199
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001888, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000018a8, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001874, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001894, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -949,53 +949,54 @@ Memory Map of the image
     0x08001066   0x08001066   0x00000028   Code   RO         1540    i.HAL_SYSTICK_Config  stm32f4xx_hal_cortex.o
     0x0800108e   0x0800108e   0x00000002   Code   RO          165    i.HardFault_Handler  stm32f4xx_it.o
     0x08001090   0x08001090   0x00000056   Code   RO          274    i.LoRa_BurstWrite   lora.o
-    0x080010e6   0x080010e6   0x00000058   Code   RO          275    i.LoRa_gotoMode     lora.o
-    0x0800113e   0x0800113e   0x000000a8   Code   RO          276    i.LoRa_init         lora.o
-    0x080011e6   0x080011e6   0x0000001e   Code   RO          278    i.LoRa_read         lora.o
-    0x08001204   0x08001204   0x00000058   Code   RO          279    i.LoRa_readReg      lora.o
-    0x0800125c   0x0800125c   0x00000028   Code   RO          280    i.LoRa_reset        lora.o
-    0x08001284   0x08001284   0x00000040   Code   RO          281    i.LoRa_setFrequency  lora.o
-    0x080012c4   0x080012c4   0x0000003e   Code   RO          282    i.LoRa_setOCP       lora.o
-    0x08001302   0x08001302   0x00000014   Code   RO          283    i.LoRa_setPower     lora.o
-    0x08001316   0x08001316   0x0000003a   Code   RO          284    i.LoRa_setSpreadingFactor  lora.o
-    0x08001350   0x08001350   0x00000020   Code   RO          285    i.LoRa_setTOMsb_setCRCon  lora.o
-    0x08001370   0x08001370   0x0000006a   Code   RO          286    i.LoRa_transmit     lora.o
-    0x080013da   0x080013da   0x0000001e   Code   RO          287    i.LoRa_write        lora.o
-    0x080013f8   0x080013f8   0x00000058   Code   RO          288    i.LoRa_writeReg     lora.o
-    0x08001450   0x08001450   0x00000090   Code   RO           14    i.MX_GPIO_Init      main.o
-    0x080014e0   0x080014e0   0x00000034   Code   RO           15    i.MX_SPI3_Init      main.o
-    0x08001514   0x08001514   0x00000002   Code   RO          166    i.MemManage_Handler  stm32f4xx_it.o
-    0x08001516   0x08001516   0x00000002   Code   RO          167    i.NMI_Handler       stm32f4xx_it.o
-    0x08001518   0x08001518   0x00000002   Code   RO          168    i.PendSV_Handler    stm32f4xx_it.o
-    0x0800151a   0x0800151a   0x0000005c   Code   RO          433    i.SPI_EndRxTransaction  stm32f4xx_hal_spi.o
-    0x08001576   0x08001576   0x00000002   PAD
-    0x08001578   0x08001578   0x00000058   Code   RO          434    i.SPI_EndRxTxTransaction  stm32f4xx_hal_spi.o
-    0x080015d0   0x080015d0   0x00000094   Code   RO          439    i.SPI_WaitFlagStateUntilTimeout  stm32f4xx_hal_spi.o
-    0x08001664   0x08001664   0x00000002   Code   RO          169    i.SVC_Handler       stm32f4xx_it.o
-    0x08001666   0x08001666   0x00000004   Code   RO          170    i.SysTick_Handler   stm32f4xx_it.o
-    0x0800166a   0x0800166a   0x00000002   PAD
-    0x0800166c   0x0800166c   0x00000080   Code   RO           16    i.SystemClock_Config  main.o
-    0x080016ec   0x080016ec   0x0000001c   Code   RO         1954    i.SystemInit        system_stm32f4xx.o
-    0x08001708   0x08001708   0x00000002   Code   RO          171    i.UsageFault_Handler  stm32f4xx_it.o
-    0x0800170a   0x0800170a   0x00000020   Code   RO         1542    i.__NVIC_SetPriority  stm32f4xx_hal_cortex.o
-    0x0800172a   0x0800172a   0x0000000e   Code   RO         2021    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08001738   0x08001738   0x00000002   Code   RO         2022    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800173a   0x0800173a   0x0000000e   Code   RO         2023    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08001748   0x08001748   0x000000c4   Code   RO           17    i.main              main.o
-    0x0800180c   0x0800180c   0x00000038   Code   RO          289    i.newLoRa           lora.o
-    0x08001844   0x08001844   0x00000010   Data   RO         1955    .constdata          system_stm32f4xx.o
-    0x08001854   0x08001854   0x00000020   Data   RO         2019    Region$$Table       anon$$obj.o
+    0x080010e6   0x080010e6   0x0000006c   Code   RO          275    i.LoRa_gotoMode     lora.o
+    0x08001152   0x08001152   0x000000b2   Code   RO          276    i.LoRa_init         lora.o
+    0x08001204   0x08001204   0x0000001e   Code   RO          278    i.LoRa_read         lora.o
+    0x08001222   0x08001222   0x00000058   Code   RO          279    i.LoRa_readReg      lora.o
+    0x0800127a   0x0800127a   0x00000028   Code   RO          280    i.LoRa_reset        lora.o
+    0x080012a2   0x080012a2   0x00000040   Code   RO          281    i.LoRa_setFrequency  lora.o
+    0x080012e2   0x080012e2   0x0000003e   Code   RO          282    i.LoRa_setOCP       lora.o
+    0x08001320   0x08001320   0x00000014   Code   RO          283    i.LoRa_setPower     lora.o
+    0x08001334   0x08001334   0x0000003a   Code   RO          284    i.LoRa_setSpreadingFactor  lora.o
+    0x0800136e   0x0800136e   0x00000020   Code   RO          285    i.LoRa_setTOMsb_setCRCon  lora.o
+    0x0800138e   0x0800138e   0x0000006a   Code   RO          286    i.LoRa_transmit     lora.o
+    0x080013f8   0x080013f8   0x0000001e   Code   RO          287    i.LoRa_write        lora.o
+    0x08001416   0x08001416   0x00000058   Code   RO          288    i.LoRa_writeReg     lora.o
+    0x0800146e   0x0800146e   0x00000002   PAD
+    0x08001470   0x08001470   0x00000090   Code   RO           14    i.MX_GPIO_Init      main.o
+    0x08001500   0x08001500   0x00000034   Code   RO           15    i.MX_SPI3_Init      main.o
+    0x08001534   0x08001534   0x00000002   Code   RO          166    i.MemManage_Handler  stm32f4xx_it.o
+    0x08001536   0x08001536   0x00000002   Code   RO          167    i.NMI_Handler       stm32f4xx_it.o
+    0x08001538   0x08001538   0x00000002   Code   RO          168    i.PendSV_Handler    stm32f4xx_it.o
+    0x0800153a   0x0800153a   0x0000005c   Code   RO          433    i.SPI_EndRxTransaction  stm32f4xx_hal_spi.o
+    0x08001596   0x08001596   0x00000002   PAD
+    0x08001598   0x08001598   0x00000058   Code   RO          434    i.SPI_EndRxTxTransaction  stm32f4xx_hal_spi.o
+    0x080015f0   0x080015f0   0x00000094   Code   RO          439    i.SPI_WaitFlagStateUntilTimeout  stm32f4xx_hal_spi.o
+    0x08001684   0x08001684   0x00000002   Code   RO          169    i.SVC_Handler       stm32f4xx_it.o
+    0x08001686   0x08001686   0x00000004   Code   RO          170    i.SysTick_Handler   stm32f4xx_it.o
+    0x0800168a   0x0800168a   0x00000002   PAD
+    0x0800168c   0x0800168c   0x00000080   Code   RO           16    i.SystemClock_Config  main.o
+    0x0800170c   0x0800170c   0x0000001c   Code   RO         1954    i.SystemInit        system_stm32f4xx.o
+    0x08001728   0x08001728   0x00000002   Code   RO          171    i.UsageFault_Handler  stm32f4xx_it.o
+    0x0800172a   0x0800172a   0x00000020   Code   RO         1542    i.__NVIC_SetPriority  stm32f4xx_hal_cortex.o
+    0x0800174a   0x0800174a   0x0000000e   Code   RO         2021    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08001758   0x08001758   0x00000002   Code   RO         2022    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800175a   0x0800175a   0x0000000e   Code   RO         2023    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08001768   0x08001768   0x000000c4   Code   RO           17    i.main              main.o
+    0x0800182c   0x0800182c   0x00000038   Code   RO          289    i.newLoRa           lora.o
+    0x08001864   0x08001864   0x00000010   Data   RO         1955    .constdata          system_stm32f4xx.o
+    0x08001874   0x08001874   0x00000020   Data   RO         2019    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001874, Size: 0x00000470, Max: 0x00020000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001894, Size: 0x00000470, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001874   0x00000004   Data   RW           19    .data               main.o
-    0x20000004   0x08001878   0x0000000c   Data   RW         1686    .data               stm32f4xx_hal.o
-    0x20000010   0x08001884   0x00000004   Data   RW         1957    .data               system_stm32f4xx.o
+    0x20000000   0x08001894   0x00000004   Data   RW           19    .data               main.o
+    0x20000004   0x08001898   0x0000000c   Data   RW         1686    .data               stm32f4xx_hal.o
+    0x20000010   0x080018a4   0x00000004   Data   RW         1957    .data               system_stm32f4xx.o
     0x20000014        -       0x00000058   Zero   RW           18    .bss                main.o
-    0x2000006c   0x08001888   0x00000004   PAD
+    0x2000006c   0x080018a8   0x00000004   PAD
     0x20000070        -       0x00000400   Zero   RW            1    STACK               startup_stm32f411xe.o
 
 
@@ -1006,8 +1007,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1016          0          0          0          0      10188   lora.o
-       520         40          0          4         88     386724   main.o
+      1046          0          0          0          0      10240   lora.o
+       520         40          0          4         88     386744   main.o
         36          8        408          0       1024        844   startup_stm32f411xe.o
        180         28          0         12          0       9325   stm32f4xx_hal.o
        172         14          0          0          0      33298   stm32f4xx_hal_cortex.o
@@ -1019,9 +1020,9 @@ Image component sizes
         28          6         16          4          0       1155   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-      5486        218        456         20       1116     462735   Object Totals
+      5518        218        456         20       1116     462807   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         8          0          0          0          4          0   (incl. Padding)
+        10          0          0          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1063,15 +1064,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5804        234        456         20       1116     458755   Grand Totals
-      5804        234        456         20       1116     458755   ELF Image Totals
-      5804        234        456         20          0          0   ROM Totals
+      5836        234        456         20       1116     458827   Grand Totals
+      5836        234        456         20       1116     458827   ELF Image Totals
+      5836        234        456         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6260 (   6.11kB)
+    Total RO  Size (Code + RO Data)                 6292 (   6.14kB)
     Total RW  Size (RW Data + ZI Data)              1136 (   1.11kB)
-    Total ROM Size (Code + RO Data + RW Data)       6280 (   6.13kB)
+    Total ROM Size (Code + RO Data + RW Data)       6312 (   6.16kB)
 
 ==============================================================================
 

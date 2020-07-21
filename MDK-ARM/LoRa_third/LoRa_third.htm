@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\LoRa_third\LoRa_third.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\LoRa_third\LoRa_third.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Jul 20 18:27:27 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Jul 21 14:08:06 2020
 <BR><P>
-<H3>Maximum Stack Usage =        248 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        256 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; LoRa_transmit &rArr; LoRa_gotoMode &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 <P>
@@ -557,7 +557,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit
 </UL>
 
-<P><STRONG><a name="[67]"></a>LoRa_gotoMode</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, lora.o(i.LoRa_gotoMode))
+<P><STRONG><a name="[67]"></a>LoRa_gotoMode</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, lora.o(i.LoRa_gotoMode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = LoRa_gotoMode &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_write
@@ -568,7 +568,7 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
 </UL>
 
-<P><STRONG><a name="[6a]"></a>LoRa_init</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, lora.o(i.LoRa_init))
+<P><STRONG><a name="[6a]"></a>LoRa_init</STRONG> (Thumb, 178 bytes, Stack size 16 bytes, lora.o(i.LoRa_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = LoRa_init &rArr; LoRa_setSpreadingFactor &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_write
@@ -747,8 +747,8 @@ Global Symbols
 
 <P><STRONG><a name="[8b]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 182 bytes, Stack size 40 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = main &rArr; LoRa_transmit &rArr; LoRa_gotoMode &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 182 bytes, Stack size 48 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = main &rArr; LoRa_transmit &rArr; LoRa_gotoMode &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit

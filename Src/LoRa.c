@@ -64,17 +64,22 @@ void LoRa_gotoMode(LoRa* _LoRa, int mode){
 	read = LoRa_read(_LoRa, RegOpMode);
 	data = read;
 	
-	if(mode == SLEEP_MODE)
+	if(mode == SLEEP_MODE){
 		data = (read & 0xF8) | 0x00;
-	else if (mode == STNBY_MODE)
+		_LoRa->current_mode = SLEEP_MODE;
+	}else if (mode == STNBY_MODE){
 		data = (read & 0xF8) | 0x01;
-	else if (mode == TRANSMIT_MODE)
+		_LoRa->current_mode = STNBY_MODE;
+	}else if (mode == TRANSMIT_MODE){
 		data = (read & 0xF8) | 0x03;
-	else if (mode == RXCONTIN_MODE)
+		_LoRa->current_mode = TRANSMIT_MODE;
+	}else if (mode == RXCONTIN_MODE){
 		data = (read & 0xF8) | 0x05;
-	else if (mode == RXSINGLE_MODE)
+		_LoRa->current_mode = RXCONTIN_MODE;
+	}else if (mode == RXSINGLE_MODE){
 		data = (read & 0xF8) | 0x06;
-	
+		_LoRa->current_mode = RXSINGLE_MODE;
+	}
 	
 	LoRa_write(_LoRa, RegOpMode, data);
 	HAL_Delay(10);
@@ -439,6 +444,7 @@ void LoRa_init(LoRa* _LoRa){
 			
 		// goto standby mode:
 			LoRa_gotoMode(_LoRa, STNBY_MODE);
+			_LoRa->current_mode = STNBY_MODE;
 			HAL_Delay(10);
 	}
 }

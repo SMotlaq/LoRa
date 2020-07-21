@@ -73,6 +73,7 @@ typedef struct LoRa_setting{
 	SPI_HandleTypeDef* hSPIx;
 	
 	// Module settings:
+	int					current_mode;
 	int 				frequency;
 	uint8_t			spredingFactor;
 	uint8_t			bandWidth;
