@@ -418,7 +418,7 @@ void LoRa_startReceiving(LoRa* _LoRa){
 
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
-void LoRa_Receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
+void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 	uint8_t read;
 	uint8_t number_of_bytes;
 	uint8_t min;
@@ -498,7 +498,8 @@ uint16_t LoRa_init(LoRa* _LoRa){
 			_LoRa->current_mode = STNBY_MODE;
 			HAL_Delay(10);
 			
-			if(LoRa_read(_LoRa, RegOpMode)==STNBY_MODE)
+			read = LoRa_read(_LoRa, RegVersion);
+			if(read == 0x12)
 				return LORA_OK;
 			else
 				return LORA_NOT_FOUND;

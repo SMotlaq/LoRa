@@ -72,6 +72,7 @@
 #define RegPreambleMsb				0x20
 #define RegPreambleLsb				0x21
 #define RegPayloadLength			0x22
+#define RegVersion						0x42
 
 //------ LORA STATUS ------//
 #define LORA_OK							200
@@ -117,6 +118,6 @@ void LoRa_setOCP(LoRa* _LoRa, uint8_t current);
 void LoRa_setTOMsb_setCRCon(LoRa* _LoRa);
 uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout);
 void LoRa_startReceiving(LoRa* _LoRa);
-void LoRa_Receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
+void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
 
 uint16_t LoRa_init(LoRa* _LoRa);
