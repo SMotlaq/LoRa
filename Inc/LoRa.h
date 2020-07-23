@@ -73,6 +73,11 @@
 #define RegPreambleLsb				0x21
 #define RegPayloadLength			0x22
 
+//------ LORA STATUS ------//
+#define LORA_OK							200
+#define LORA_NOT_FOUND			404
+#define LORA_LARGE_PAYLOAD	413
+#define LORA_UNAVAILABLE		503
 
 typedef struct LoRa_setting{
 	
@@ -114,4 +119,4 @@ uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeo
 void LoRa_startReceiving(LoRa* _LoRa);
 void LoRa_Receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
 
-void LoRa_init(LoRa* _LoRa);
+uint16_t LoRa_init(LoRa* _LoRa);
