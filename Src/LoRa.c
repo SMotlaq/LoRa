@@ -423,6 +423,9 @@ void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 	uint8_t number_of_bytes;
 	uint8_t min;
 	
+	for(int i=0; i<length; i++)
+		data[i]=0;
+	
 	LoRa_gotoMode(_LoRa, STNBY_MODE);
 	read = LoRa_read(_LoRa, RegIrqFlags);
 	if((read & 0x40) != 0){

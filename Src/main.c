@@ -108,10 +108,10 @@ int main(void)
 	myLoRa.frequency             = 433;							  // default = 433 MHz
 	myLoRa.spredingFactor        = SF_7;							// default = SF_7
 	myLoRa.bandWidth			       = BW_125KHz;				  // default = BW_125KHz
-	myLoRa.crcRate				       = CR_4_5;						// default = CR_4_5
+	myLoRa.crcRate				       = CR_4_8;						// default = CR_4_5
 	myLoRa.power					       = POWER_20db;				// default = 20db
 	myLoRa.overCurrentProtection = 120; 							// default = 100 mA
-	myLoRa.preamble				       = 10;		  						// default = 8;
+	myLoRa.preamble				       = 10;		  					// default = 8;
 	
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
@@ -133,13 +133,15 @@ int main(void)
 		
 		//SENDING COMMAND
 		LoRa_transmit(&myLoRa, (uint8_t*)"salam", 7, 200);
-		HAL_Delay(2000);
+		HAL_Delay(3000);
 		//READING RESPONSE
 		LoRa_receive(&myLoRa, read_data, 127);
 		
+		//HAL_Delay(3000);
+		
 		//SENDING COMMAND
 		LoRa_transmit(&myLoRa, (uint8_t*)"bye bye", 7, 200);
-		HAL_Delay(2000);
+		HAL_Delay(3000);
 		//READING RESPONSE
 		LoRa_receive(&myLoRa, read_data, 127);
     
