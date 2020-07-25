@@ -129,17 +129,22 @@ int main(void)
   while (1)
   {
 		
-		// READING 10 BYTES FROM BUFFER --------------------------------
-//		LoRa_receive(&myLoRa, read_data, 128);
-//		HAL_Delay(500);
-//		for(int i = 0; i<30; i++)
-//			send_data[i] = read_data[i];
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		
-		LoRa_transmit(&myLoRa, (uint8_t*)"salan", 7, 200);
+		//SENDING COMMAND
+		LoRa_transmit(&myLoRa, (uint8_t*)"salam", 7, 200);
 		HAL_Delay(2000);
+		//READING RESPONSE
 		LoRa_receive(&myLoRa, read_data, 127);
 		
-    /* USER CODE END WHILE */
+		//SENDING COMMAND
+		LoRa_transmit(&myLoRa, (uint8_t*)"bye bye", 7, 200);
+		HAL_Delay(2000);
+		//READING RESPONSE
+		LoRa_receive(&myLoRa, read_data, 127);
+    
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+		/* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
