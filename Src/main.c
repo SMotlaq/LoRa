@@ -44,7 +44,9 @@
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
-uint8_t read_data[10];
+uint8_t read_data[128];
+uint8_t send_data[128];
+
 //LoRa myLoRa;
 
 /* USER CODE END PV */
@@ -108,8 +110,8 @@ int main(void)
 	myLoRa.bandWidth			       = BW_125KHz;				  // default = BW_125KHz
 	myLoRa.crcRate				       = CR_4_5;						// default = CR_4_5
 	myLoRa.power					       = POWER_20db;				// default = 20db
-	myLoRa.overCurrentProtection = 130; 							// default = 100 mA
-	myLoRa.preamble				       = 8;		  						// default = 8;
+	myLoRa.overCurrentProtection = 120; 							// default = 100 mA
+	myLoRa.preamble				       = 10;		  						// default = 8;
 	
 	LoRa_reset(&myLoRa);
 	LoRa_init(&myLoRa);
@@ -128,8 +130,14 @@ int main(void)
   {
 		
 		// READING 10 BYTES FROM BUFFER --------------------------------
-		LoRa_Receive(&myLoRa, read_data, 10);
-		HAL_Delay(500);
+//		LoRa_receive(&myLoRa, read_data, 128);
+//		HAL_Delay(500);
+//		for(int i = 0; i<30; i++)
+//			send_data[i] = read_data[i];
+		
+		LoRa_transmit(&myLoRa, (uint8_t*)"salan", 7, 200);
+		HAL_Delay(2000);
+		LoRa_receive(&myLoRa, read_data, 127);
 		
     /* USER CODE END WHILE */
 
