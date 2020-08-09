@@ -87,6 +87,8 @@ typedef struct LoRa_setting{
 	uint16_t			     CS_pin;
 	GPIO_TypeDef*      reset_port;
 	uint16_t			     reset_pin;
+	GPIO_TypeDef*      DIO0_port;
+	uint16_t			     DIO0_pin;
 	SPI_HandleTypeDef* hSPIx;
 	
 	// Module settings:
