@@ -7,7 +7,8 @@
 // -------------------------------------------------- //
 
 // include your suitable library here:
-#include "stm32f4xx_hal.h"
+//#include "stm32f4xx_hal.h"
+#include "main.h"
 
 #define TRANSMIT_TIMEOUT	2000
 #define RECEIVE_TIMEOUT		2000
@@ -72,6 +73,8 @@
 #define RegPreambleMsb				0x20
 #define RegPreambleLsb				0x21
 #define RegPayloadLength			0x22
+#define RegDioMapping1				0x40
+#define RegDioMapping2				0x41
 #define RegVersion						0x42
 
 //------ LORA STATUS ------//
@@ -121,5 +124,6 @@ void LoRa_setTOMsb_setCRCon(LoRa* _LoRa);
 uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout);
 void LoRa_startReceiving(LoRa* _LoRa);
 void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
+void LoRa_receive_IT(LoRa* _LoRa, uint8_t* data, uint8_t length);
 
 uint16_t LoRa_init(LoRa* _LoRa);
