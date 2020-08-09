@@ -1,9 +1,9 @@
 --cpu=Cortex-M4.fp.sp
 ".\lora_third\startup_stm32f411xe.o"
+".\lora_third\lora.o"
 ".\lora_third\main.o"
 ".\lora_third\stm32f4xx_it.o"
 ".\lora_third\stm32f4xx_hal_msp.o"
-".\lora_third\lora.o"
 ".\lora_third\stm32f4xx_hal_spi.o"
 ".\lora_third\stm32f4xx_hal_rcc.o"
 ".\lora_third\stm32f4xx_hal_rcc_ex.o"

@@ -1,5 +1,6 @@
 .\lora_third\lora.o: ..\Src\LoRa.c
 .\lora_third\lora.o: ../Inc/LoRa.h
+.\lora_third\lora.o: ../Inc/main.h
 .\lora_third\lora.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 .\lora_third\lora.o: ../Inc/stm32f4xx_hal_conf.h
 .\lora_third\lora.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h

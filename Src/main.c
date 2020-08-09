@@ -44,6 +44,7 @@
 SPI_HandleTypeDef hspi3;
 
 /* USER CODE BEGIN PV */
+LoRa myLoRa;
 uint8_t read_data[128];
 uint8_t send_data[128];
 
@@ -73,7 +74,6 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
-  
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -97,13 +97,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	
 	// MODULE SETTINGS ----------------------------------------------
-	LoRa myLoRa = newLoRa();
+	myLoRa = newLoRa();
 	
 	myLoRa.hSPIx                 = &hspi3;
 	myLoRa.CS_port               = NSS_GPIO_Port;
 	myLoRa.CS_pin                = NSS_Pin;
 	myLoRa.reset_port            = RESET_GPIO_Port;
 	myLoRa.reset_pin             = RESET_Pin;
+	myLoRa.DIO0_port						 = DIO0_GPIO_Port;
+	myLoRa.DIO0_pin							 = DIO0_Pin;
 	
 	myLoRa.frequency             = 433;							  // default = 433 MHz
 	myLoRa.spredingFactor        = SF_7;							// default = SF_7
@@ -118,12 +120,10 @@ int main(void)
 	
 	// START CONTINUOUS RECEIVING -----------------------------------
 	LoRa_startReceiving(&myLoRa);
-	
 	//---------------------------------------------------------------
 	
   /* USER CODE END 2 */
- 
- 
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -132,21 +132,21 @@ int main(void)
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		
 		//SENDING COMMAND
-		LoRa_transmit(&myLoRa, (uint8_t*)"salam", 7, 200);
-		HAL_Delay(3000);
+		//LoRa_transmit(&myLoRa, (uint8_t*)"salam", 7, 200);
+		//HAL_Delay(3000);
 		//READING RESPONSE
-		LoRa_receive(&myLoRa, read_data, 127);
+		//LoRa_receive(&myLoRa, read_data, 127);
 		
 		//HAL_Delay(3000);
 		
 		//SENDING COMMAND
-		LoRa_transmit(&myLoRa, (uint8_t*)"bye bye", 7, 200);
-		HAL_Delay(3000);
+		//LoRa_transmit(&myLoRa, (uint8_t*)"bye bye", 7, 200);
+		//HAL_Delay(3000);
 		//READING RESPONSE
-		LoRa_receive(&myLoRa, read_data, 127);
+		//LoRa_receive(&myLoRa, read_data, 127);
     
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
@@ -253,6 +253,12 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, RESET_Pin|NSS_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pin : DIO0_Pin */
+  GPIO_InitStruct.Pin = DIO0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(DIO0_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : RESET_Pin NSS_Pin */
   GPIO_InitStruct.Pin = RESET_Pin|NSS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -260,10 +266,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	if(GPIO_Pin == myLoRa.DIO0_pin){
+		LoRa_receive(&myLoRa, read_data, 128);
+	}
+}
 /* USER CODE END 4 */
 
 /**
