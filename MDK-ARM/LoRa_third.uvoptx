@@ -153,7 +153,12 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>read_data</ItemText>
+          <ItemText>RSSI,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\LoRa_third\../Src/main.c\read_data</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

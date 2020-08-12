@@ -67,6 +67,7 @@
 #define RegFiFoRxCurrentAddr	0x10
 #define RegIrqFlags						0x12
 #define RegRxNbBytes					0x13
+#define RegPktRssiValue				0x1A
 #define	RegModemConfig1				0x1D
 #define RegModemConfig2				0x1E
 #define RegSymbTimeoutL				0x1F
@@ -125,5 +126,6 @@ uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeo
 void LoRa_startReceiving(LoRa* _LoRa);
 void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
 void LoRa_receive_IT(LoRa* _LoRa, uint8_t* data, uint8_t length);
+int LoRa_getRSSI(LoRa* _LoRa);
 
 uint16_t LoRa_init(LoRa* _LoRa);

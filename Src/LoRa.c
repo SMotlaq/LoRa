@@ -441,6 +441,22 @@ void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 }
 
 /* ----------------------------------------------------------------------------- *\
+		name        : LoRa_getRSSI
+
+		description : initialize and set the right setting according to LoRa sruct vars
+
+		arguments   : 
+			LoRa* LoRa        --> LoRa object handler
+
+		returns     : Returns the RSSI value of last received packet.
+\* ----------------------------------------------------------------------------- */
+int LoRa_getRSSI(LoRa* _LoRa){
+	uint8_t read;
+	read = LoRa_read(_LoRa, RegPktRssiValue);
+	return -164 + read;
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_init
 
 		description : initialize and set the right setting according to LoRa sruct vars

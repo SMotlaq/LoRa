@@ -47,7 +47,7 @@ SPI_HandleTypeDef hspi3;
 LoRa myLoRa;
 uint8_t read_data[128];
 uint8_t send_data[128];
-
+int			RSSI;
 //LoRa myLoRa;
 
 /* USER CODE END PV */
@@ -110,7 +110,7 @@ int main(void)
 	myLoRa.frequency             = 433;							  // default = 433 MHz
 	myLoRa.spredingFactor        = SF_7;							// default = SF_7
 	myLoRa.bandWidth			       = BW_125KHz;				  // default = BW_125KHz
-	myLoRa.crcRate				       = CR_4_8;						// default = CR_4_5
+	myLoRa.crcRate				       = CR_4_5;						// default = CR_4_5
 	myLoRa.power					       = POWER_20db;				// default = 20db
 	myLoRa.overCurrentProtection = 120; 							// default = 100 mA
 	myLoRa.preamble				       = 10;		  					// default = 8;
@@ -135,9 +135,9 @@ int main(void)
 		//LoRa_transmit(&myLoRa, (uint8_t*)"salam", 7, 200);
 		//HAL_Delay(3000);
 		//READING RESPONSE
-		//LoRa_receive(&myLoRa, read_data, 127);
-		
-		//HAL_Delay(3000);
+		LoRa_receive(&myLoRa, read_data, 127);
+		RSSI = LoRa_getRSSI(&myLoRa);
+		HAL_Delay(1500);
 		
 		//SENDING COMMAND
 		//LoRa_transmit(&myLoRa, (uint8_t*)"bye bye", 7, 200);
@@ -275,7 +275,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	if(GPIO_Pin == myLoRa.DIO0_pin){
-		LoRa_receive(&myLoRa, read_data, 128);
+		//LoRa_receive(&myLoRa, read_data, 128);
 	}
 }
 /* USER CODE END 4 */
