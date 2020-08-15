@@ -130,21 +130,41 @@ int main(void)
   {
 		
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		
-		//SENDING COMMAND
-		//LoRa_transmit(&myLoRa, (uint8_t*)"salam", 7, 200);
-		//HAL_Delay(3000);
-		//READING RESPONSE
 		LoRa_receive(&myLoRa, read_data, 127);
 		RSSI = LoRa_getRSSI(&myLoRa);
-		HAL_Delay(1500);
 		
-		//SENDING COMMAND
-		//LoRa_transmit(&myLoRa, (uint8_t*)"bye bye", 7, 200);
-		//HAL_Delay(3000);
-		//READING RESPONSE
-		//LoRa_receive(&myLoRa, read_data, 127);
-    
+		if( RSSI >= -40) {
+			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_SET);
+		}
+		else if ( RSSI >= -60){
+			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);			
+		}
+		else if ( RSSI >= -80){
+			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);
+		}
+		else if ( RSSI >= -100) {
+			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);
+		}
+		else {
+			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);
+		}
+		
+		HAL_Delay(1500);    
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     /* USER CODE END WHILE */
 
@@ -247,11 +267,15 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, RESET_Pin|NSS_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOD, LEVEL1_Pin|LEVEL2_Pin|LEVEL3_Pin|LEVEL4_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : DIO0_Pin */
   GPIO_InitStruct.Pin = DIO0_Pin;
@@ -266,6 +290,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : LEVEL1_Pin LEVEL2_Pin LEVEL3_Pin LEVEL4_Pin */
+  GPIO_InitStruct.Pin = LEVEL1_Pin|LEVEL2_Pin|LEVEL3_Pin|LEVEL4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
@@ -275,7 +306,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	if(GPIO_Pin == myLoRa.DIO0_pin){
-		//LoRa_receive(&myLoRa, read_data, 128);
+
 	}
 }
 /* USER CODE END 4 */

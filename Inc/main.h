@@ -65,6 +65,14 @@ void Error_Handler(void);
 #define RESET_GPIO_Port GPIOE
 #define NSS_Pin GPIO_PIN_15
 #define NSS_GPIO_Port GPIOE
+#define LEVEL1_Pin GPIO_PIN_12
+#define LEVEL1_GPIO_Port GPIOD
+#define LEVEL2_Pin GPIO_PIN_13
+#define LEVEL2_GPIO_Port GPIOD
+#define LEVEL3_Pin GPIO_PIN_14
+#define LEVEL3_GPIO_Port GPIOD
+#define LEVEL4_Pin GPIO_PIN_15
+#define LEVEL4_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
