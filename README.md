@@ -6,6 +6,7 @@ See [wiki](https://github.com/SMotlaq/LoRa_third/wiki) to learn more
 * Over current protection
 * Transmiting and receiveing data
 * Sleep mode access for power saving (especially for battery powered systems)
+* RSSI estimation
 * Easy to use :)
 
 # Contact
