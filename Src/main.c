@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "LoRa.h"
+#include "LoRaMAC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -119,7 +119,7 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	// START CONTINUOUS RECEIVING -----------------------------------
-	LoRa_startReceiving(&myLoRa);
+	//LoRa_startReceiving(&myLoRa);
 	//---------------------------------------------------------------
 	
   /* USER CODE END 2 */
@@ -130,41 +130,12 @@ int main(void)
   {
 		
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		LoRa_receive(&myLoRa, read_data, 127);
-		RSSI = LoRa_getRSSI(&myLoRa);
+		send_data[0] = 0x3B; // MY ADDRESS
+		for(int i=0; i<26; i++)
+			send_data[i+1] = 48+i;
+		LoRa_transmit(&myLoRa, send_data, 128, 500);
+		HAL_Delay(1500);
 		
-		if( RSSI >= -40) {
-			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_SET);
-		}
-		else if ( RSSI >= -60){
-			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);			
-		}
-		else if ( RSSI >= -80){
-			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);
-		}
-		else if ( RSSI >= -100) {
-			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);
-		}
-		else {
-			HAL_GPIO_WritePin(LEVEL1_GPIO_Port, LEVEL1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LEVEL2_GPIO_Port, LEVEL2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LEVEL3_GPIO_Port, LEVEL3_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LEVEL4_GPIO_Port, LEVEL4_Pin, GPIO_PIN_RESET);
-		}
-		
-		HAL_Delay(1500);    
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     /* USER CODE END WHILE */
 

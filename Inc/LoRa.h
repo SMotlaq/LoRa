@@ -6,8 +6,6 @@
 // |                                                | \\
 // -------------------------------------------------- //
 
-// include your suitable library here:
-//#include "stm32f4xx_hal.h"
 #include "main.h"
 
 #define TRANSMIT_TIMEOUT	2000
