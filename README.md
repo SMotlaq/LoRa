@@ -9,5 +9,12 @@ See [wiki](https://github.com/SMotlaq/LoRa_third/wiki) to learn more
 * RSSI estimation
 * Easy to use :)
 
+# Successfully tested on:
+- [x] F103C8
+- [x] F103RE
+- [ ] F407xx
+- [x] F411VE
+- [X] F429ZG
+
 # Contact
 [Telegram](http://t.me/s_motlaq) or E-mail: motlaq@aut.ac.ir
