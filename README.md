@@ -1,5 +1,5 @@
 # LoRa module (SX1278) library for STM32 and HAL
-See [wiki](https://github.com/SMotlaq/LoRa_third/wiki) to learn more
+See [here](https://github.com/SMotlaq/LoRa_third/wiki) to learn more
 
 # Features
 * Full access to LoRa settings including bandwidth, spreading factor, carrier frequency, coding rate etc.
