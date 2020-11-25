@@ -23,7 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "LoRaMAC.h"
+#include <stdlib.h>
+#include "LoRa.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -119,24 +120,26 @@ int main(void)
 	LoRa_init(&myLoRa);
 	
 	// START CONTINUOUS RECEIVING -----------------------------------
-	//LoRa_startReceiving(&myLoRa);
+	LoRa_startReceiving(&myLoRa);
 	//---------------------------------------------------------------
-	
-  /* USER CODE END 2 */
+
+	/* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
 		
-		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+		// SENDING DATA - - - - - - - - - - - - - - - - - - - - - - - - -
 		send_data[0] = 0x3B; // MY ADDRESS
 		for(int i=0; i<26; i++)
 			send_data[i+1] = 48+i;
 		LoRa_transmit(&myLoRa, send_data, 128, 500);
 		HAL_Delay(1500);
 		
-		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+		// RECEIVING DATA - - - - - - - - - - - - - - - - - - - - - - - -
+		LoRa_receive(&myLoRa, read_data, 128);
+		
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
