@@ -19,7 +19,6 @@ See [here](https://github.com/SMotlaq/LoRa_third/wiki) to learn more
 # Contact
 [Telegram](http://t.me/s_motlaq) or E-mail: motlaq@aut.ac.ir
 
-# How to use 
 - - - -
 # Hardware
 ## Requirements
