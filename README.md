@@ -6,10 +6,19 @@
 * RSSI estimation
 * Easy to use :)
 
+# Donate
+Is it helpfull?
+
+<p align="left">
+  <a href="https://yekpay.me/SMotlaq">
+  <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
+  </a>
+</p>
+
 # Successfully tested on:
 - [x] F103C8
 - [x] F103RE
-- [ ] F407xx
+- [x] F030C8
 - [x] F411VE
 - [X] F429ZG
 
