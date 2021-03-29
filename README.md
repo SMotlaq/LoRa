@@ -212,6 +212,8 @@ This function changes operating mode from STANDBY to RXCONTINUOUS, and after tha
 
 ### Example:
 ```C
+LoRa_startReceiving(&myLoRa);
+
 uint8_t received_data[10];
 while(1){
   LoRa_receive(&myLoRa, received_data, 10);
