@@ -10,7 +10,7 @@
 Is it helpfull?
 
 <p align="left">
-  <a href="https://yekpay.me/SMotlaq">
+  <a href="http://smotlaq.ir/bScwQ">
   <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
   </a>
 </p>
