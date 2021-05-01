@@ -416,12 +416,12 @@ void LoRa_startReceiving(LoRa* _LoRa){
 			uint8_t  data			--> A pointer to the array that you want to write bytes in it
 			uint8_t	 length   --> Determines how many bytes you want to read
 
-		returns     : Nothing
+		returns     : The number of bytes received
 \* ----------------------------------------------------------------------------- */
-void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
+uint8_t LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 	uint8_t read;
 	uint8_t number_of_bytes;
-	uint8_t min;
+	uint8_t min = 0;
 
 	for(int i=0; i<length; i++)
 		data[i]=0;
@@ -438,6 +438,7 @@ void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length){
 			data[i] = LoRa_read(_LoRa, RegFiFo);
 	}
 	LoRa_gotoMode(_LoRa, RXCONTIN_MODE);
+    return min;
 }
 
 /* ----------------------------------------------------------------------------- *\
