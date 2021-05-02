@@ -227,8 +227,9 @@ This function changes operating mode from STANDBY to RXCONTINUOUS, and after tha
 LoRa_startReceiving(&myLoRa);
 
 uint8_t received_data[10];
+uint8_t packet_size=0;
 while(1){
-  LoRa_receive(&myLoRa, received_data, 10);
+  packet_size = LoRa_receive(&myLoRa, received_data, 10);
   Hal_Delay(500);
 }
 ```
