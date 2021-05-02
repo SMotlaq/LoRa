@@ -213,11 +213,14 @@ LoRa_startReceiving(&myLoRa);
 ```
 This function changes operating mode from STANDBY to RXCONTINUOUS, and after that you can store the last received packet in a variable by calling ```LoRa_receive```.  You can call ```LoRa_receive``` in a timer interrupt callback (recommended) or in your main loop.
 
-```void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length)```
+```uint8_t LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length)```
 ### Arguments:
 * ```_LoRa```: Your LoRa object
 * ```data```: A pointer to the array that you want to write received bytes in.
 * ```length```: The number of bytes you want to read.
+
+### Returns:
+* The size of recieved packet in bytes.
 
 ### Example:
 ```C
