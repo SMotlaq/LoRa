@@ -23,7 +23,7 @@ Is it helpfull?
 - [X] F429ZG
 
 # Contact
-[Telegram](http://t.me/s_motlaq) or E-mail: motlaq@aut.ac.ir
+[Telegram](http://t.me/s_motlaq) or E-mail: pilot.motlaq@gmail.com
 
 - - - -
 # Hardware
