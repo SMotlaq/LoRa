@@ -19,8 +19,9 @@ Is it helpfull?
 - [x] F103C8
 - [x] F103RE
 - [x] F030C8
-- [x] F411VE
+- [x] F411VE (Discovery board)
 - [X] F429ZG
+- [x] L476RG (Nucleo-L476RG)
 
 # Contact
 [Telegram](http://t.me/s_motlaq) or E-mail: pilot.motlaq@gmail.com
