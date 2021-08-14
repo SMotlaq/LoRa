@@ -51,7 +51,7 @@ The wire connections are like following:
 **Note:** The DIO0 pin has not been used yet, but I'll add this feature asap 😉
 
 # Installation
-Download or copy [LoRa.c](https://github.com/SMotlaq/LoRa_third/blob/master/Src/LoRa.c) and [LoRa.h](https://github.com/SMotlaq/LoRa_third/blob/master/Inc/LoRa.h)
+Download or copy [LoRa.c](https://github.com/SMotlaq/LoRa/blob/master/LoRa/LoRa.c) and [LoRa.h](https://github.com/SMotlaq/LoRa/blob/master/LoRa/LoRa.h)
 , import them into your project and then include LoRa.h in main.c:
 ```C
 #include "LoRa.h"
