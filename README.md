@@ -1,13 +1,3 @@
-
-# Donate
-Is it helpfull?
-
-<p align="left">
-  <a href="http://smotlaq.ir/LQgQF">
-  <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
-  </a>
-</p>
-
 # Outlines
  * [Features](https://github.com/SMotlaq/LoRa#features)
  * [Successfully tested on](https://github.com/SMotlaq/LoRa#successfully-tested-on)
@@ -20,6 +10,15 @@ Is it helpfull?
  * [Transmitting Data](https://github.com/SMotlaq/LoRa#transmitting-data)
  * [Receive Data](https://github.com/SMotlaq/LoRa#receive-data)
  * [Signal power estimation](https://github.com/SMotlaq/LoRa#signal-power-estimation)
+ * 
+# Donate
+Is it helpfull?
+
+<p align="left">
+  <a href="http://smotlaq.ir/LQgQF">
+  <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
+  </a>
+</p>
 
 # Features
 * Full access to LoRa settings including bandwidth, spreading factor, carrier frequency, coding rate etc.
