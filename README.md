@@ -1,10 +1,3 @@
-# Features
-* Full access to LoRa settings including bandwidth, spreading factor, carrier frequency, coding rate etc.
-* Over current protection
-* Transmiting and receiveing data
-* Sleep mode access for power saving (especially for battery powered systems)
-* RSSI estimation
-* Easy to use :)
 
 # Donate
 Is it helpfull?
@@ -14,6 +7,27 @@ Is it helpfull?
   <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
   </a>
 </p>
+
+# Outlines
+ * [Features](https://github.com/SMotlaq/LoRa#features)
+ * [Successfully tested on](https://github.com/SMotlaq/LoRa#successfully-tested-on)
+ * [Contact](https://github.com/SMotlaq/LoRa#contact)
+ * Hardware:
+   * [Requirements](https://github.com/SMotlaq/LoRa#requirements)
+   * [Wiring](https://github.com/SMotlaq/LoRa#wiring)
+ * [Installation](https://github.com/SMotlaq/LoRa#Installation)
+ * [Initial configurations](https://github.com/SMotlaq/LoRa#initial-configurations)
+ * [Transmitting Data](https://github.com/SMotlaq/LoRa#transmitting-data)
+ * [Receive Data](https://github.com/SMotlaq/LoRa#receive-data)
+ * [Signal power estimation](https://github.com/SMotlaq/LoRa#signal-power-estimation)
+
+# Features
+* Full access to LoRa settings including bandwidth, spreading factor, carrier frequency, coding rate etc.
+* Over current protection
+* Transmiting and receiveing data
+* Sleep mode access for power saving (especially for battery powered systems)
+* RSSI estimation
+* Easy to use :)
 
 # Successfully tested on:
 - [x] F103C8
