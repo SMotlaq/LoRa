@@ -10,7 +10,7 @@
 Is it helpfull?
 
 <p align="left">
-  <a href="http://smotlaq.ir/bScwQ">
+  <a href="http://smotlaq.ir/LQgQF">
   <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
   </a>
 </p>
@@ -19,11 +19,12 @@ Is it helpfull?
 - [x] F103C8
 - [x] F103RE
 - [x] F030C8
-- [x] F411VE
+- [x] F411VE (Discovery board)
 - [X] F429ZG
+- [x] L476RG (Nucleo-L476RG)
 
 # Contact
-[Telegram](http://t.me/s_motlaq) or E-mail: motlaq@aut.ac.ir
+[Telegram](http://t.me/s_motlaq) or E-mail: pilot.motlaq@gmail.com
 
 - - - -
 # Hardware
@@ -213,19 +214,23 @@ LoRa_startReceiving(&myLoRa);
 ```
 This function changes operating mode from STANDBY to RXCONTINUOUS, and after that you can store the last received packet in a variable by calling ```LoRa_receive```.  You can call ```LoRa_receive``` in a timer interrupt callback (recommended) or in your main loop.
 
-```void LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length)```
+```uint8_t LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length)```
 ### Arguments:
 * ```_LoRa```: Your LoRa object
 * ```data```: A pointer to the array that you want to write received bytes in.
 * ```length```: The number of bytes you want to read.
+
+### Returns:
+* The size of recieved packet in bytes.
 
 ### Example:
 ```C
 LoRa_startReceiving(&myLoRa);
 
 uint8_t received_data[10];
+uint8_t packet_size = 0;
 while(1){
-  LoRa_receive(&myLoRa, received_data, 10);
+  packet_size = LoRa_receive(&myLoRa, received_data, 10);
   Hal_Delay(500);
 }
 ```
