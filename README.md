@@ -10,7 +10,7 @@
  * [Transmitting Data](https://github.com/SMotlaq/LoRa#transmitting-data)
  * [Receive Data](https://github.com/SMotlaq/LoRa#receive-data)
  * [Signal power estimation](https://github.com/SMotlaq/LoRa#signal-power-estimation)
- * 
+
 # Donate
 Is it helpfull?
 
