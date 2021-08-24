@@ -1,4 +1,5 @@
 # Outlines
+ * [Tutorial video](https://github.com/SMotlaq/LoRa#Tutorial-video)
  * [Features](https://github.com/SMotlaq/LoRa#features)
  * [Successfully tested on](https://github.com/SMotlaq/LoRa#successfully-tested-on)
  * [Contact](https://github.com/SMotlaq/LoRa#contact)
@@ -17,6 +18,13 @@ Is it helpfull?
 <p align="left">
   <a href="http://smotlaq.ir/LQgQF">
   <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/bmc.png" width="200" alt="Buy me a Coffee"/>
+  </a>
+</p>
+
+# Tutorial video
+<p align="left">
+  <a href="http://smotlaq.ir/BCrSo">
+  <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/tut.jpg" alt="YouTube video"/>
   </a>
 </p>
 
