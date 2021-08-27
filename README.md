@@ -69,7 +69,6 @@ The wire connections are like following:
 |  3.3v   |    3.3v    |
 |  GND   |    GND    |
 
-**Note:** The DIO0 pin has not been used yet, but I'll add this feature asap 😉
 
 # Installation
 Download or copy [LoRa.c](https://github.com/SMotlaq/LoRa/blob/master/LoRa/LoRa.c) and [LoRa.h](https://github.com/SMotlaq/LoRa/blob/master/LoRa/LoRa.h)
