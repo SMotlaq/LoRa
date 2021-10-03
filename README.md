@@ -23,7 +23,7 @@ Is it helpfull?
 
 # Tutorial video
 <p align="left">
-  <a href="https://youtu.be/jMGnSQyCUqw">
+  <a href="http://smotlaq.ir/BCrSo">
   <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/tut.jpg" alt="YouTube video"/>
   </a>
 </p>
