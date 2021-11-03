@@ -116,7 +116,7 @@ The status codes are:
 * ```503```: LORA_UNAVAILABLE - Something in LoRa's settings (i.e. NSS port/pin, RESET port/pin or SPI handler) is not correct.
 
 Other status codes:
-* ```413```: LORA_LARGE_PAYLOAD - Your data is larger than 128 bytes.
+* ```413```: LORA_LARGE_PAYLOAD - Your data is larger than 255 bytes.
 ### Example
 ```C
 #include "stdio.h"
