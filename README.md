@@ -1,3 +1,10 @@
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 # Outlines
  * [Tutorial video](https://github.com/SMotlaq/LoRa#Tutorial-video)
  * [Features](https://github.com/SMotlaq/LoRa#features)
@@ -262,3 +269,14 @@ The SX127x series can measure the power of the last received packet. The ```LoRa
 * ```_LoRa```: Your LoRa object
 ### Returns:
 * An integer representing the power in dBm. For example -43.
+
+[contributors-shield]: https://img.shields.io/github/contributors/SMotlaq/LoRa.svg?style=for-the-badge
+[contributors-url]: https://github.com/SMotlaq/LoRa/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/SMotlaq/LoRa.svg?style=for-the-badge
+[forks-url]: https://github.com/SMotlaq/LoRa/network/members
+[stars-shield]: https://img.shields.io/github/stars/SMotlaq/LoRa.svg?style=for-the-badge
+[stars-url]: https://github.com/SMotlaq/LoRa/stargazers
+[issues-shield]: https://img.shields.io/github/issues/SMotlaq/LoRa.svg?style=for-the-badge
+[issues-url]: https://github.com/SMotlaq/LoRa/issues
+[license-shield]: https://img.shields.io/github/license/SMotlaq/LoRa.svg?style=for-the-badge
+[license-url]: https://github.com/SMotlaq/LoRa/blob/master/LICENSE.txt
