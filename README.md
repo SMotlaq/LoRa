@@ -9,6 +9,7 @@
  * [Tutorial video](https://github.com/SMotlaq/LoRa#Tutorial-video)
  * [Features](https://github.com/SMotlaq/LoRa#features)
  * [Successfully tested on](https://github.com/SMotlaq/LoRa#successfully-tested-on)
+ * [Star history](https://github.com/SMotlaq/LoRa#star-history)
  * [Contact](https://github.com/SMotlaq/LoRa#contact)
  * Hardware:
    * [Requirements](https://github.com/SMotlaq/LoRa#requirements)
@@ -54,6 +55,9 @@ Is it helpfull?
 # Contact
 [Telegram](http://t.me/s_motlaq) or E-mail: pilot.motlaq@gmail.com
 
+# Star history
+[![Star History Chart](https://api.star-history.com/svg?repos=SMotlaq/lora&type=Date)](https://star-history.com/#SMotlaq/lora&Date)
+
 - - - -
 # Hardware
 ## Requirements
@@ -61,7 +65,6 @@ Is it helpfull?
 * 433MHz antenna
 * STM32 microcontroller
 ![LoRa Ra-02](https://cdn.tindiemedia.com/images/resize/IzO2QX7doEQpY-AYqTPyBQB5Hdo=/p/fit-in/1032x688/filters:fill(fff)/i/69669/products/2018-02-09T16%3A46%3A57.338Z-Lora%2002%20breakout%20board_1.JPG)
-![433MHz antenna](https://www.botshop.co.za/wp-content/uploads/2019/07/antenna-433mhz.jpg)
 
 ## Wiring
 The wire connections are like following:
