@@ -205,7 +205,7 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 
 		arguments   :
 			LoRa* LoRa        --> LoRa object handler
-			int   power       --> desired power e.g POWER_17db
+			int   power       --> desired power like POWER_17db
 
 		returns     : Nothing
 \* ----------------------------------------------------------------------------- */
@@ -325,7 +325,7 @@ void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t lengt
 
 	//NSS = 1
 	HAL_GPIO_WritePin(_LoRa->CS_port, _LoRa->CS_pin, GPIO_PIN_RESET);
-	//say module thai I want to write in RegFiFo
+	
 	HAL_SPI_Transmit(_LoRa->hSPIx, &addr, 1, TRANSMIT_TIMEOUT);
 	while (HAL_SPI_GetState(_LoRa->hSPIx) != HAL_SPI_STATE_READY)
 		;
@@ -389,7 +389,6 @@ uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeo
 		}
 		HAL_Delay(1);
 	}
-
 }
 
 /* ----------------------------------------------------------------------------- *\
@@ -476,7 +475,7 @@ uint16_t LoRa_init(LoRa* _LoRa){
 			LoRa_gotoMode(_LoRa, SLEEP_MODE);
 			HAL_Delay(10);
 
-		// turn on lora mode:
+		// turn on LoRa mode:
 			read = LoRa_read(_LoRa, RegOpMode);
 			HAL_Delay(10);
 			data = read | 0x80;
