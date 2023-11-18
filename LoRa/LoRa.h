@@ -2,7 +2,7 @@
 // |                                                | \\
 // |            WRITTEN BY: Sslman Motlaq           | \\
 // |               Telegram: @S_Motlaq              | \\
-// |            E-MAIL:  motlaq@aut.ac.ir           | \\
+// |         E-MAIL:  pilot.motlaq@gmail.com        | \\
 // |                                                | \\
 // -------------------------------------------------- //
 
