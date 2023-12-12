@@ -264,6 +264,21 @@ void LoRa_setTOMsb_setCRCon(LoRa* _LoRa){
 }
 
 /* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setTOMsb_setCRCon
+
+		description : set timeout msb to 0xFF + set CRC enable.
+
+		arguments   :
+			LoRa* LoRa        --> LoRa object handler
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setSyncWord(LoRa* _LoRa, uint8_t syncword){
+	LoRa_write(_LoRa, RegSyncWord, syncword);
+	HAL_Delay(10);
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_read
 
 		description : read a register by an address

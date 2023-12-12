@@ -72,6 +72,7 @@
 #define RegPreambleMsb			0x20
 #define RegPreambleLsb			0x21
 #define RegPayloadLength		0x22
+#define RegSyncWord				0x39
 #define RegDioMapping1			0x40
 #define RegDioMapping2			0x41
 #define RegVersion			0x42
@@ -120,6 +121,7 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
 void LoRa_setPower(LoRa* _LoRa, uint8_t power);
 void LoRa_setOCP(LoRa* _LoRa, uint8_t current);
 void LoRa_setTOMsb_setCRCon(LoRa* _LoRa);
+void LoRa_setSyncWord(LoRa* _LoRa, uint8_t syncword);
 uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout);
 void LoRa_startReceiving(LoRa* _LoRa);
 uint8_t LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length);
