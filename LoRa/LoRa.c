@@ -139,6 +139,48 @@ void LoRa_writeReg(LoRa* _LoRa, uint8_t* address, uint16_t r_length, uint8_t* va
 }
 
 /* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setLowDaraRateOptimization
+
+		description : set the LowDataRateOptimization flag. Is is mandated for when the symbol length exceeds 16ms.
+
+		arguments   :
+			LoRa*	LoRa         --> LoRa object handler
+			uint8_t	value        --> 0 to disable, otherwise to enable
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setLowDaraRateOptimization(LoRa* _LoRa, uint8_t value){
+	uint8_t	data;
+	uint8_t	read;
+
+	read = LoRa_read(_LoRa, RegModemConfig3);
+	
+	if(value)
+		data = read | 0x08;
+	else
+		data = read & 0xF7;
+
+	LoRa_write(_LoRa, RegModemConfig3, data);
+	HAL_Delay(10);
+}
+
+/* ----------------------------------------------------------------------------- *\
+		name        : LoRa_setAutoLDO
+
+		description : set the LowDataRateOptimization flag automatically based on the symbol length.
+
+		arguments   :
+			LoRa*	LoRa         --> LoRa object handler
+
+		returns     : Nothing
+\* ----------------------------------------------------------------------------- */
+void LoRa_setAutoLDO(LoRa* _LoRa){
+	double BW[] = {7.8, 10.4, 15.6, 20.8, 31.25, 41.7, 62.5, 125.0, 250.0, 500.0};
+	
+	LoRa_setLowDaraRateOptimization(_LoRa, ((1 << _LoRa->spredingFactor) / ((double)BW[_LoRa->bandWidth])) >= 16.0);
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_setFrequency
 
 		description : set carrier frequency e.g 433 MHz
@@ -196,6 +238,8 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 	data = (SF << 4) + (read & 0x0F);
 	LoRa_write(_LoRa, RegModemConfig2, data);
 	HAL_Delay(10);
+	
+	LoRa_setAutoLDO(_LoRa);
 }
 
 /* ----------------------------------------------------------------------------- *\
@@ -522,6 +566,7 @@ uint16_t LoRa_init(LoRa* _LoRa){
 			data = 0;
 			data = (_LoRa->bandWidth << 4) + (_LoRa->crcRate << 1);
 			LoRa_write(_LoRa, RegModemConfig1, data);
+			LoRa_setAutoLDO(_LoRa);
 
 		// set preamble:
 			LoRa_write(_LoRa, RegPreambleMsb, _LoRa->preamble >> 8);

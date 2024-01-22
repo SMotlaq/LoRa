@@ -62,8 +62,8 @@
 #define RegFiFoAddPtr			0x0D
 #define RegFiFoTxBaseAddr		0x0E
 #define RegFiFoRxBaseAddr		0x0F
-#define RegFiFoRxCurrentAddr		0x10
-#define RegIrqFlags			0x12
+#define RegFiFoRxCurrentAddr	0x10
+#define RegIrqFlags				0x12
 #define RegRxNbBytes			0x13
 #define RegPktRssiValue			0x1A
 #define	RegModemConfig1			0x1D
@@ -72,6 +72,7 @@
 #define RegPreambleMsb			0x20
 #define RegPreambleLsb			0x21
 #define RegPayloadLength		0x22
+#define RegModemConfig3			0x26
 #define RegSyncWord				0x39
 #define RegDioMapping1			0x40
 #define RegDioMapping2			0x41
@@ -116,6 +117,8 @@ void LoRa_write(LoRa* _LoRa, uint8_t address, uint8_t value);
 void LoRa_BurstWrite(LoRa* _LoRa, uint8_t address, uint8_t *value, uint8_t length);
 uint8_t LoRa_isvalid(LoRa* _LoRa);
 
+void LoRa_setLowDaraRateOptimization(LoRa* _LoRa, uint8_t value);
+void LoRa_setAutoLDO(LoRa* _LoRa);
 void LoRa_setFrequency(LoRa* _LoRa, int freq);
 void LoRa_setSpreadingFactor(LoRa* _LoRa, int SP);
 void LoRa_setPower(LoRa* _LoRa, uint8_t power);
