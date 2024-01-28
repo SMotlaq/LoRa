@@ -177,7 +177,7 @@ void LoRa_setLowDaraRateOptimization(LoRa* _LoRa, uint8_t value){
 void LoRa_setAutoLDO(LoRa* _LoRa){
 	double BW[] = {7.8, 10.4, 15.6, 20.8, 31.25, 41.7, 62.5, 125.0, 250.0, 500.0};
 	
-	LoRa_setLowDaraRateOptimization(_LoRa, ((1 << _LoRa->spredingFactor) / ((double)BW[_LoRa->bandWidth])) >= 16.0);
+	LoRa_setLowDaraRateOptimization(_LoRa, (long)((1 << _LoRa->spredingFactor) / ((double)BW[_LoRa->bandWidth])) > 16.0);
 }
 
 /* ----------------------------------------------------------------------------- *\
