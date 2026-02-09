@@ -516,6 +516,38 @@ int LoRa_getRSSI(LoRa* _LoRa){
 }
 
 /* ----------------------------------------------------------------------------- *\
+        name        : LoRa_getSNR_x4
+
+        description : Reads SNR of the last received packet.
+                      Register RegPktSnrValue (0x19) is signed (two's complement)
+                      with 0.25 dB resolution.
+
+        return      : SNR * 4  (quarter-dB units)
+\* ----------------------------------------------------------------------------- */
+int16_t LoRa_getSNR_x4(LoRa* _LoRa)
+{
+    const uint8_t raw = LoRa_read(_LoRa, RegPktSnrValue);
+
+    /* Cast to int8_t to correctly interpret two's complement signed value */
+    const int8_t snr_quarter_db = (int8_t)raw;
+
+    /* Value is already in 0.25 dB steps => returned as "x4" */
+    return (int16_t)snr_quarter_db;
+}
+
+/* ----------------------------------------------------------------------------- *\
+        name        : LoRa_getSNR
+
+        description : Returns SNR (dB) of the last received packet.
+
+        return      : SNR in dB (float)
+\* ----------------------------------------------------------------------------- */
+float LoRa_getSNR(LoRa* _LoRa)
+{
+    return ((float)LoRa_getSNR_x4(_LoRa)) * 0.25f;
+}
+
+/* ----------------------------------------------------------------------------- *\
 		name        : LoRa_init
 
 		description : initialize and set the right setting according to LoRa sruct vars
