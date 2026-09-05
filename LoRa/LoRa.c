@@ -255,6 +255,15 @@ void LoRa_setSpreadingFactor(LoRa* _LoRa, int SF){
 \* ----------------------------------------------------------------------------- */
 void LoRa_setPower(LoRa* _LoRa, uint8_t power){
 	LoRa_write(_LoRa, RegPaConfig, power);
+	
+	// Enable +20 dBm high-power mode if POWER_20db is requested
+    if(power == POWER_20db){
+        LoRa_write(_LoRa, RegPaDac, 0x87);   // High Power +20 dBm
+    }
+    else{
+        LoRa_write(_LoRa, RegPaDac, 0x84);   // Normal mode (max 17 dBm)
+    }
+	
 	HAL_Delay(10);
 }
 
