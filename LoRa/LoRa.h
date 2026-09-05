@@ -77,6 +77,7 @@
 #define RegDioMapping1			0x40
 #define RegDioMapping2			0x41
 #define RegVersion			0x42
+#define RegPaDac              0x4D
 
 //------ LORA STATUS ------//
 #define LORA_OK				200
