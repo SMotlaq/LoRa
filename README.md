@@ -338,23 +338,8 @@ Contributions are welcome! Please:
 **Original author:** Salman Ami Motlaq ([@S_Motlaq](https://t.me/s_motlaq))  
 Email: pilot.motlaq@gmail.com
 
-Major refactoring, SNR support, documentation and compatibility layer: 2026
-
----
-
-## License
-
-This project is released under the **MIT License**. See [LICENSE](LICENSE) for details.
-
----
-
-## Support the Project
-
 If this library saved you time, consider giving it a ⭐ on GitHub!
 
----
-
-**Happy LoRa-ing!** 📡
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/SMotlaq/LoRa.svg?style=for-the-badge
 [contributors-url]: https://github.com/SMotlaq/LoRa/graphs/contributors
