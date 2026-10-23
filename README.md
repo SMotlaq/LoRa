@@ -5,23 +5,17 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-# Outlines
- * [Tutorial video](https://github.com/SMotlaq/LoRa#Tutorial-video)
- * [Features](https://github.com/SMotlaq/LoRa#features)
- * [Successfully tested on](https://github.com/SMotlaq/LoRa#successfully-tested-on)
- * [Star history](https://github.com/SMotlaq/LoRa#star-history)
- * [Contact](https://github.com/SMotlaq/LoRa#contact)
- * Hardware:
-   * [Requirements](https://github.com/SMotlaq/LoRa#requirements)
-   * [Wiring](https://github.com/SMotlaq/LoRa#wiring)
- * [Installation](https://github.com/SMotlaq/LoRa#Installation)
- * [Initial configurations](https://github.com/SMotlaq/LoRa#initial-configurations)
- * [Transmitting Data](https://github.com/SMotlaq/LoRa#transmitting-data)
- * [Receive Data](https://github.com/SMotlaq/LoRa#receive-data)
- * [Signal power estimation](https://github.com/SMotlaq/LoRa#signal-power-estimation)
+# LoRa Library for STM32 (SX1278 / Ra-02)
 
-# Donate
-Is it helpfull?
+A clean, well-documented, and reliable HAL-based library for the **Ra-02** (and other SX1276/77/78/79 based) LoRa modules on STM32 microcontrollers.
+
+> **Version 2.0 - Oct 2026** – Major cleanup, bug fixes, SNR support, improved RSSI, Doxygen documentation, and compatibility layer for older code.
+
+---
+
+## Donate
+
+Is it helpful?
 
 <p align="left">
   <a href="http://smotlaq.ir/LQgQF">
@@ -29,250 +23,339 @@ Is it helpfull?
   </a>
 </p>
 
-# Tutorial video
+---
+
+## Tutorial Video
+
 <p align="left">
   <a href="http://smotlaq.ir/BCrSo">
   <img src="https://raw.githubusercontent.com/SMotlaq/LoRa/master/tut.jpg" alt="YouTube video"/>
   </a>
 </p>
 
-# Features
-* Full access to LoRa settings including bandwidth, spreading factor, carrier frequency, coding rate etc.
-* Over current protection
-* Transmiting and receiveing data
-* Sleep mode access for power saving (especially for battery powered systems)
-* RSSI estimation
-* Easy to use :)
+---
 
-# Successfully tested on:
-- [x] F103C8
-- [x] F103RE
-- [x] F030C8
-- [x] F411VE (Discovery board)
-- [X] F429ZG
-- [x] L476RG (Nucleo-L476RG)
+## Features
 
-# Contact
-[Telegram](http://t.me/s_motlaq) or E-mail: pilot.motlaq@gmail.com
+- Full control over LoRa parameters (Frequency, Spreading Factor, Bandwidth, Coding Rate, Power, Preamble, OCP)
+- Blocking transmit with timeout
+- Continuous receive mode + interrupt-friendly receive (`LoRa_receive_IT`)
+- RSSI and **SNR** measurement
+- Automatic Low Data Rate Optimization
+- Sleep / Standby / TX / RX modes
+- Hardware reset support
+- Clean Doxygen documentation
+- Compatibility layer for code written with the old API (before October 2026)
 
-# Star history
-[![Star History Chart](https://api.star-history.com/svg?repos=SMotlaq/lora&type=Date)](https://star-history.com/#SMotlaq/lora&Date)
+---
 
-- - - -
-# Hardware
-## Requirements
-* Ra-02 LoRa module with SX1278 chip
-* 433MHz antenna
-* STM32 microcontroller
-![LoRa Ra-02](https://cdn.tindiemedia.com/images/resize/IzO2QX7doEQpY-AYqTPyBQB5Hdo=/p/fit-in/1032x688/filters:fill(fff)/i/69669/products/2018-02-09T16%3A46%3A57.338Z-Lora%2002%20breakout%20board_1.JPG)
+## Successfully Tested On
 
-## Wiring
-The wire connections are like following:
-| STM pin | Module pin |
-| ------- | ---------- |
-|  SPI MISO   |    MISO    |
-|  SPI MOSI   |    MOSI    |
-|  SPI CLK   |    CLK    |
-|  a GPIO output (initially HIGH)   |    NSS    |
-|  a GPIO output (initially HIGH)  |    RST    |
-|  a GPIO input (EXTI - Rising edge)  |    DIO0    |
-|  3.3v   |    3.3v    |
-|  GND   |    GND    |
+| MCU              | Board                  | Status |
+|------------------|------------------------|--------|
+| STM32F103C8      | Blue Pill              | ✅     |
+| STM32F103RE      |                        | ✅     |
+| STM32F030C8      |                        | ✅     |
+| STM32F411VE      | Discovery              | ✅     |
+| STM32F429ZG      |                        | ✅     |
+| STM32L476RG      | Nucleo-L476RG          | ✅     |
 
+---
 
-# Installation
-Download or copy [LoRa.c](https://github.com/SMotlaq/LoRa/blob/master/LoRa/LoRa.c) and [LoRa.h](https://github.com/SMotlaq/LoRa/blob/master/LoRa/LoRa.h)
-, import them into your project and then include LoRa.h in main.c:
-```C
+## Hardware Requirements
+
+- Ra-02 LoRa module (SX1278) or compatible SX127x module
+- 433 MHz antenna (or matching antenna for your frequency)
+- STM32 microcontroller with SPI
+
+### Wiring
+
+| STM32 Pin                          | Ra-02 Pin |
+|------------------------------------|-----------|
+| SPI MISO                           | MISO      |
+| SPI MOSI                           | MOSI      |
+| SPI SCK                            | SCK       |
+| Any GPIO (output, default HIGH)    | NSS       |
+| Any GPIO (output, default HIGH)    | RST       |
+| Any GPIO (input + EXTI rising)     | DIO0      |
+| 3.3 V                              | 3.3 V     |
+| GND                                | GND       |
+
+> **Important:** Never power the module with 5 V. Always use 3.3 V and connect an antenna before transmitting.
+
+---
+
+## Installation
+
+1. Copy `LoRa.h` and `LoRa.c` into your project.
+2. Add the include path if necessary.
+3. Include the header in your source files:
+
+```c
 #include "LoRa.h"
 ```
-# Initial configurations
-First of all, you'll have to create a LoRa object:
-```C
- LoRa myLoRa;
-```
-Then you'll have to call its constructor in your main function:
-```C
- myLoRa = newLoRa();
-```
-Now, the default settings are set in ```myLoRa```, but you must set 7 important parameters:
 
- * NSS pin
- * NSS port
- * Reset pin
- * Reset port
- * DIO0 port
- * DIO0 pin
- * The SPI used for communication
+### Using the Compatibility Layer (for old code)
 
-```C
-myLoRa.CS_port         = NSS_GPIO_Port;
-myLoRa.CS_pin          = NSS_Pin;
-myLoRa.reset_port      = RESET_GPIO_Port;
-myLoRa.reset_pin       = RESET_Pin;
-myLoRa.DIO0_port       = DIO0_GPIO_Port;
-myLoRa.DIO0_pin        = DIO0_Pin;
-myLoRa.hSPIx           = &hspi3;
+If you have existing projects written with the **old API** (before October 2026 / version < 2.0), also include the compatibility header:
+
+```c
+#include "LoRa.h"
+#include "LoRa_compat.h"   // ← enables old names
 ```
 
-Now, calling ```LoRa_init()```, will write these settings in the module's memory.
-```C
-LoRa_init(&myLoRa);
-```
-This function returns a "status code" to represent module response status. 
-The status codes are:
-* ```200```: LORA_OK - Everything is OK.
-* ```404```: LORA_NOT_FOUND - Your microcontroller can't communicate with the LoRa module and read the RegVersion.
-* ```503```: LORA_UNAVAILABLE - Something in LoRa's settings (i.e. NSS port/pin, RESET port/pin or SPI handler) is not correct.
+This restores most of the old `#define`s (`SF_7`, `BW_125KHz`, `STNBY_MODE`, `POWER_20db`, etc.).
 
-Other status codes:
-* ```413```: LORA_LARGE_PAYLOAD - Your data is larger than 255 bytes.
-### Example
-```C
-#include "stdio.h"
-#include "string.h"
-.
-.
-.
-char   send_data[200];
-uint16_t LoRa_status = LoRa_init(&myLoRa);
-memset(send_data,NULL,200);
+**Note:** You still need to rename the structure members (see [Migration Guide](#migration-from-old-versions)).
 
-if (LoRa_status==LORA_OK){
-  snprintf(send_data,sizeof(send_data),"\n\r LoRa is running... :) \n\r");
-  LoRa_transmit(&myLoRa, (uint8_t*)send_data, 120, 100);
-  HAL_UART_Transmit(&debugUART, (uint8_t*)send_data, 200, 200);
+---
+
+## Quick Start
+
+```c
+#include "LoRa.h"
+
+LoRa myLoRa;
+
+int main(void)
+{
+    // ... HAL init, SPI init, GPIO init ...
+
+    myLoRa = newLoRa();
+
+    // Hardware pins
+    myLoRa.CS_port     = NSS_GPIO_Port;
+    myLoRa.CS_pin      = NSS_Pin;
+    myLoRa.reset_port  = RESET_GPIO_Port;
+    myLoRa.reset_pin   = RESET_Pin;
+    myLoRa.DIO0_port   = DIO0_GPIO_Port;
+    myLoRa.DIO0_pin    = DIO0_Pin;
+    myLoRa.hSPIx       = &hspi1;
+
+    // Optional radio settings (defaults are fine for many cases)
+    myLoRa.frequency        = 433;                 // MHz
+    myLoRa.spreadingFactor  = LORA_SF_7;
+    myLoRa.bandwidth        = LORA_BW_125_KHZ;
+    myLoRa.codingRate       = LORA_CR_4_5;
+    myLoRa.power            = LORA_POWER_17DBM;
+    myLoRa.overCurrentProtection = 100;            // mA
+    myLoRa.preamble         = 8;
+
+    uint16_t status = LoRa_init(&myLoRa);
+
+    if (status == LORA_OK) {
+        // Module is ready
+    } else if (status == LORA_NOT_FOUND) {
+        // Cannot communicate with the module (check wiring / SPI)
+    } else {
+        // Invalid configuration (NULL pointers)
+    }
+
+    while (1) {
+        // Your application
+    }
 }
-else{
-  snprintf(send_data,sizeof(send_data),"\n\r LoRa failed :( \n\r Error code: %d \n\r", LoRa_status);
-  HAL_UART_Transmit(&debugUART, (uint8_t*)send_data, 200, 200);
+```
+
+---
+
+## Configuration Options
+
+### Spreading Factor
+```c
+LORA_SF_6 ... LORA_SF_12
+```
+
+### Bandwidth
+```c
+LORA_BW_7_8_KHZ, LORA_BW_10_4_KHZ, LORA_BW_15_6_KHZ,
+LORA_BW_20_8_KHZ, LORA_BW_31_25_KHZ, LORA_BW_41_7_KHZ,
+LORA_BW_62_5_KHZ, LORA_BW_125_KHZ, LORA_BW_250_KHZ, LORA_BW_500_KHZ
+```
+
+### Coding Rate
+```c
+LORA_CR_4_5, LORA_CR_4_6, LORA_CR_4_7, LORA_CR_4_8
+```
+
+### Output Power
+```c
+LORA_POWER_11DBM, LORA_POWER_14DBM, LORA_POWER_17DBM, LORA_POWER_20DBM
+```
+
+> When using `LORA_POWER_20DBM`, the library automatically enables high-power mode via `RegPaDac`.  
+> Make sure your OCP setting is high enough (≥ 140 mA recommended for +20 dBm).
+
+### Over Current Protection
+Valid range: **45 mA – 240 mA**  
+(Values are rounded according to the datasheet formula.)
+
+---
+
+## Transmitting Data
+
+```c
+uint8_t data[] = "Hello LoRa!";
+uint8_t success = LoRa_transmit(&myLoRa, data, sizeof(data) - 1, 1000); // 1 second timeout
+
+if (success) {
+    // Transmission completed (TxDone)
+} else {
+    // Timeout
 }
 ```
-Other parameters are set like the following:
-```C
-myLoRa.frequency             = 434;             // default = 433 MHz
-myLoRa.spredingFactor        = SF_9;            // default = SF_7
-myLoRa.bandWidth             = BW_250KHz;       // default = BW_125KHz
-myLoRa.crcRate               = CR_4_8;          // default = CR_4_5
-myLoRa.power                 = POWER_17db;      // default = 20db
-myLoRa.overCurrentProtection = 130;             // default = 100 mA
-myLoRa.preamble              = 10;              // default = 8;
-```
-### Spreading factor values
-```C
-//--- SPREADING FACTORS ---//
-SF_7      7
-SF_8      8
-SF_9      9
-SF_10     10
-SF_11     11
-SF_12     12
-```
-### Bandwidth values
-```C
-//------- BANDWIDTH -------//
-BW_7_8KHz     7.8   KHz
-BW_10_4KHz    10.4  KHz
-BW_15_6KHz    15.6  KHz
-BW_20_8KHz    20.8  KHz
-BW_31_25KHz   31.25 KHz
-BW_41_7KHz    41.7  KHz
-BW_62_5KHz    62.5  KHz
-BW_125KHz     125   KHz
-BW_250KHz     250   KHz
-BW_500KHz     500   KHz
-```
-### Coding rate values
-```C
-//------ CODING RATE ------//
-CR_4_5    4/5
-CR_4_6    4/6
-CR_4_7    4/7
-CR_4_8    4/8
-```
-### Power values
-```C
-//------ POWER GAIN ------//
-POWER_11db  11db
-POWER_14db  14db
-POWER_17db  17db
-POWER_20db  20db
-```
-### Over current protection
-The maximum current must be a multiple of 5 if it is less than 120, and a multiple of 10 if it is greater than 120.
-The minimum value is 45 mA and the maximum is 240 mA. See [this file](https://github.com/SMotlaq/LoRa_third/blob/master/OCP_values.xlsx?raw=true) to learn about allowed currents.
 
-# Transmitting Data
-After these configurations, now you can transmit a set of bytes using the LoRa_transmit function:
+**Note:** After calling `LoRa_transmit()`, the FIFO is overwritten. If you need to receive right after transmitting, add a short delay or switch back to receive mode explicitly.
 
-```uint8_t LoRa_transmit(LoRa* _LoRa, uint8_t* data, uint8_t length, uint16_t timeout)```
+---
 
-**NOTE: After calling this function, the FiFo data buffer will be cleared. It means that all received packets will be deleted. If you want to read data just after transmitting something, you should add a delay.**
-### Arguments:
-* ```_LoRa```: Your LoRa object
-* ```data```: A pointer to the data you wanna send
-* ```length```: Size of your data in Bytes
-* ```timeOut```: Timeout in milliseconds
-### Returns:
-* ```1``` in case of success, ```0``` in case of timeout
+## Receiving Data
 
-### Example:
-1. 
-```C
-char*  send_data;
-send_data = "Hello world!";
-LoRa_transmit(&myLoRa, (uint8_t*)send_data, 12, 100);
-```  
-2.
-```C
-char*  send_data;
-send_data = "Hello world!";
-if(LoRa_transmit(&myLoRa, (uint8_t*)send_data, 12, 100) == 1){
-   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-}
-```  
-# Receive Data
-LoRa modules have two receive modes:
-1. Single
-2. Continuous
+### Polling mode
 
-This library only supports "Continuous mode".
-
-First of all, you'll have to enable receiving data:
-```C
-LoRa_startReceiving(&myLoRa);
-```
-This function changes operating mode from STANDBY to RXCONTINUOUS, and after that you can store the last received packet in a variable by calling ```LoRa_receive```.  You can call ```LoRa_receive``` in a timer interrupt callback (recommended) or in your main loop.
-
-```uint8_t LoRa_receive(LoRa* _LoRa, uint8_t* data, uint8_t length)```
-### Arguments:
-* ```_LoRa```: Your LoRa object
-* ```data```: A pointer to the array that you want to write received bytes in.
-* ```length```: The number of bytes you want to read.
-
-### Returns:
-* The size of recieved packet in bytes.
-
-### Example:
-```C
+```c
 LoRa_startReceiving(&myLoRa);
 
-uint8_t received_data[10];
-uint8_t packet_size = 0;
-while(1){
-  packet_size = LoRa_receive(&myLoRa, received_data, 10);
-  Hal_Delay(500);
+uint8_t buffer[64];
+uint8_t len = LoRa_receive(&myLoRa, buffer, sizeof(buffer));
+
+if (len > 0) {
+    // New packet received
+    int rssi = LoRa_getRSSI(&myLoRa);
+    float snr = LoRa_getSNR(&myLoRa);
 }
 ```
-# Signal power estimation
-The SX127x series can measure the power of the last received packet. The ```LoRa_getRSSI(...)``` can do this.
 
-```int LoRa_getRSSI(LoRa* _LoRa)```
-### Arguments:
-* ```_LoRa```: Your LoRa object
-### Returns:
-* An integer representing the power in dBm. For example -43.
+### Interrupt mode (recommended)
 
+1. Configure DIO0 as external interrupt (rising edge).
+2. In the EXTI callback:
+
+```c
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == DIO0_Pin) {
+        uint8_t buffer[64];
+        uint8_t len = LoRa_receive_IT(&myLoRa, buffer, sizeof(buffer));
+
+        if (len > 0) {
+            // Process packet
+            int rssi = LoRa_getRSSI(&myLoRa);
+            float snr = LoRa_getSNR(&myLoRa);
+        }
+    }
+}
+```
+
+---
+
+## Signal Quality
+
+```c
+int   rssi = LoRa_getRSSI(&myLoRa);   // dBm (improved, uses SNR when negative)
+float snr  = LoRa_getSNR(&myLoRa);    // dB  (resolution 0.25 dB)
+```
+
+---
+
+## Migration from Old Versions (before October 2026)
+
+The October 2026 release (v2.0) introduced several breaking changes for better code quality:
+
+| Old name              | New name                  |
+|-----------------------|---------------------------|
+| `spredingFactor`      | `spreadingFactor`         |
+| `bandWidth`           | `bandwidth`               |
+| `crcRate`             | `codingRate`              |
+| `STNBY_MODE`          | `LORA_MODE_STANDBY`       |
+| `POWER_20db`          | `LORA_POWER_20DBM`        |
+| `SF_7`, `BW_125KHz`…  | `LORA_SF_7`, `LORA_BW_125_KHZ`… |
+
+### Recommended migration steps
+
+1. Replace `LoRa.h` / `LoRa.c` with the new files.
+2. Add `#include "LoRa_compat.h"` temporarily.
+3. Rename the three structure members listed above.
+4. (Optional) Gradually switch to the new `LORA_` prefixed defines.
+5. Remove `LoRa_compat.h` when your code is fully updated.
+
+A detailed migration guide is available in [`MIGRATION.md`](MIGRATION.md).
+
+---
+
+## Status Codes
+
+| Code | Macro              | Meaning                                      |
+|------|--------------------|----------------------------------------------|
+| 200  | `LORA_OK`          | Initialization successful                    |
+| 404  | `LORA_NOT_FOUND`   | Module not responding (SPI / wiring issue)   |
+| 413  | `LORA_LARGE_PAYLOAD` | Payload larger than 255 bytes              |
+| 503  | `LORA_UNAVAILABLE` | Invalid configuration (NULL pointers etc.)   |
+
+---
+
+## Project Structure (Recommended)
+
+```
+YourProject/
+├── Core/
+│   └── ...
+├── Drivers/
+│   └── ...
+├── LoRa/
+│   ├── LoRa.h
+│   ├── LoRa.c
+│   └── LoRa_compat.h      ← only if you need old API
+└── ...
+```
+
+---
+
+## Documentation
+
+All public functions are documented with Doxygen comments.  
+You can generate HTML documentation with:
+
+```bash
+doxygen Doxyfile
+```
+
+---
+
+## Contributing
+
+Contributions are welcome! Please:
+
+1. Open an issue first for major changes.
+2. Follow the existing code style.
+3. Keep the compatibility layer working when possible.
+4. Update documentation if needed.
+
+---
+
+## Author & Contact
+
+**Original author:** Salman Ami Motlaq ([@S_Motlaq](https://t.me/s_motlaq))  
+Email: pilot.motlaq@gmail.com
+
+Major refactoring, SNR support, documentation and compatibility layer: 2026
+
+---
+
+## License
+
+This project is released under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+---
+
+## Support the Project
+
+If this library saved you time, consider giving it a ⭐ on GitHub!
+
+---
+
+**Happy LoRa-ing!** 📡
+<!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/SMotlaq/LoRa.svg?style=for-the-badge
 [contributors-url]: https://github.com/SMotlaq/LoRa/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/SMotlaq/LoRa.svg?style=for-the-badge
@@ -282,4 +365,4 @@ The SX127x series can measure the power of the last received packet. The ```LoRa
 [issues-shield]: https://img.shields.io/github/issues/SMotlaq/LoRa.svg?style=for-the-badge
 [issues-url]: https://github.com/SMotlaq/LoRa/issues
 [license-shield]: https://img.shields.io/github/license/SMotlaq/LoRa.svg?style=for-the-badge
-[license-url]: https://github.com/SMotlaq/LoRa/blob/master/LICENSE.txt
+[license-url]: https://github.com/SMotlaq/LoRa/blob/master/LICENSE
