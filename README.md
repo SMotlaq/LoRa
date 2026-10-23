@@ -106,7 +106,7 @@ If you have existing projects written with the **old API** (before October 2026 
 
 This restores most of the old `#define`s (`SF_7`, `BW_125KHz`, `STNBY_MODE`, `POWER_20db`, etc.).
 
-**Note:** You still need to rename the structure members (see [Migration Guide](#migration-from-old-versions)).
+**Note:** You still need to rename the structure members (see [Migration Guide](#migration-from-old-versions-before-october-2026)).
 
 ---
 
@@ -275,7 +275,7 @@ The October 2026 release (v2.0) introduced several breaking changes for better c
 
 1. Replace `LoRa.h` / `LoRa.c` with the new files.
 2. Add `#include "LoRa_compat.h"` temporarily.
-3. Rename the three structure members listed above.
+3. Rename the first three structure members listed above.
 4. (Optional) Gradually switch to the new `LORA_` prefixed defines.
 5. Remove `LoRa_compat.h` when your code is fully updated.
 
